@@ -9,6 +9,6 @@ public class Go extends Property{
 	
 	public void collect() {
 		
-		
+		//
 	}
 }
