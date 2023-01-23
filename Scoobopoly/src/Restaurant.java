@@ -1,5 +1,5 @@
 
-public class Factory extends Property{
+public class Restaurant extends Property {
 
 	protected int price;
 	protected String owner;
@@ -7,7 +7,7 @@ public class Factory extends Property{
 	protected int lodging;
 	protected String group;
 	
-	protected Factory(String n, int u, int p, String o, boolean fs, int l, String g) {
+	protected Restaurant(String n, int u, int p, String o, boolean fs, int l, String g) {
 		
 		name = n;
 		umber = u;

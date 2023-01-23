@@ -9,6 +9,6 @@ public class Go extends Property{
 	
 	public void collect() {
 		
-		//
+		assets.set(player).bank() = assets.get(player).bank() + 200;
 	}
 }
