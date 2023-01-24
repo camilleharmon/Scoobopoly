@@ -3,11 +3,13 @@ import java.util.ArrayList;
 public class Runner {
 
 	static ArrayList <Property> board = new ArrayList<Property>();
+	static ArrayList <Card> chance = new ArrayList<Card>();
+	static ArrayList <Card> communityChest = new ArrayList<Card>();
 	
 	public static void main(String[] args) {
 		
 		fillBoard();
-
+		fillDecks();
 	}
 	
 	public static void fillBoard() {
@@ -52,41 +54,42 @@ public class Runner {
 			board.add(new Estate("Kingston Mansion", 38, 350, "Unowned", false, 0, "Blue"));
 		//Jeepers
 			board.add(new Estate("Vasquez Castle", 40, 400, "Unowned", false, 0, "Blue"));
+			
 	}
 	
 	public static void fillDecks() {
 		
-		communityChest.add(new Card("Community Chest", "Advance to Go(Collect $200))", 0, 0, false));
-        communityChest.add(new Card("Community Chest", "Bank Error in your favor - collect $200", 200, -1, false));
-        communityChest.add(new Card("Community Chest", "Doctors's fees - Pay $50", -50, -1, false));
-        communityChest.add(new Card("Community Chest", "Get Out of Jail Free", 0, -1, true));
-        communityChest.add(new Card("Community Chest", "Go Directly to Jail - Do not Pass Go, do not collect $200", 0, 10, false));
-        communityChest.add(new Card("Community Chest", "Grand opening of the Opera, collect $50 from each player", -50, -1, true));
-        communityChest.add(new Card("Community Chest", "Income Tax Refund - Collect $20", 20, -1, false));
-        communityChest.add(new Card("Community Chest", "Life Insurance Matures, collect $100", 100, -1, false));
-        communityChest.add(new Card("Community Chest", "Pay Hospital Fee of $100", -100, -1, false));
-        communityChest.add(new Card("Community Chest", "Pay School Fee of $50", -50, -1, false));
-        communityChest.add(new Card("Community Chest", "You are assessed for Street Repairs - pay $40 per house, $115 per Hotel", -40, -1, true));
-        communityChest.add(new Card("Community Chest", "You have won second prize in a Beauty contest, collect $10", 10, -1, false));
-        communityChest.add(new Card("Community Chest", "You inherit $100", 100, -1, false));
-        communityChest.add(new Card("Community Chest", "From sale of Stock you get $50", 50, -1, false));
-        communityChest.add(new Card("Community Chest", "XMAS Fund Matures, collect $100", 100, -1, false));
+		communityChest.add(new Card("Zoinks", 00, "Advance to Go(Collect $200))", false));
+        communityChest.add(new Card("Zoinks", 00, "Bank Error in your favor - collect $200", false));
+        communityChest.add(new Card("Zoinks", 00, "Doctors's fees - Pay $50", false));
+        communityChest.add(new Card("Zoinks", 00, "Get Out of Jail Free", false));
+        communityChest.add(new Card("Zoinks", 00, "Go Directly to Jail - Do not Pass Go, do not collect $200", false));
+        communityChest.add(new Card("Zoinks", 00, "Grand opening of the Opera, collect $50 from each player", false));
+        communityChest.add(new Card("Zoinks", 00, "Income Tax Refund - Collect $20", false));
+        communityChest.add(new Card("Zoinks", 00, "Life Insurance Matures, collect $100", false));
+        communityChest.add(new Card("Zoinks", 00, "Pay Hospital Fee of $100", false));
+        communityChest.add(new Card("Zoinks", 00, "Pay School Fee of $50", false));
+        communityChest.add(new Card("Zoinks", 00, "You are assessed for Street Repairs - pay $40 per house, $115 per Hotel", false));
+        communityChest.add(new Card("Zoinks", 00, "You have won second prize in a Beauty contest, collect $10", false));
+        communityChest.add(new Card("Zoinks", 00, "You inherit $100", false));
+        communityChest.add(new Card("Zoinks", 00, "From sale of Stock you get $50", false));
+        communityChest.add(new Card("Zoinks", 00, "XMAS Fund Matures, collect $100", false));
         
-        //Chance cards
-        chance.add(new Card("Chance", "Advance to Go(Collect $200)", 0, 0, false));
-        chance.add(new Card("Chance", "Advance to Illinois Ave. - if you pass Go, collect $200", 0, 24, false));
-        chance.add(new Card("Chance", "Advance token to the nearest Utility.\nIf unowned, you may buy it from the Bank.\nIf owned, throw dice and pay owner a total of 10 times the amount shown.", 0, -1, true));
-        chance.add(new Card("Chance", "Advance token to the nearest Railroad.\nIf unowned, you may buy it from the Bank.\nIf owned, pay the owner twice the amount that they are entitled", 0, -1, true));
-        chance.add(new Card("Chance", "Advance token to the nearest Railroad.\nIf unowned, you may buy it from the Bank.\nIf owned, pay the owner twice the amount that they are entitled", 0, -1, true));
-        chance.add(new Card("Chance", "Advance to St. Charles Place - if you pass Go, collect $200", 0, 11, false));
-        chance.add(new Card("Chance", "Bank pays you dividend of $50", 50, -1, false));
-        chance.add(new Card("Chance", "Get out of Jail free.", 0, -1, true));
-        chance.add(new Card("Chance", "Go back 3 spaces", 0, -1, true));
-       /chance.add(new Card("Chance", "You are assessed for street repairs, pay $25 for each house and $100 for each hotel", 0, -1, true));
-        chance.add(new Card("Chance", "Pay Poor tax of $15", -15, -1, false));
-        chance.add(new Card("Chance", "Take a trip on the Reading Railroad - if you pass Go, collect $200", 0, 5, false));
-        chance.add(new Card("Chance", "Take a walk on the Boardwalk - advance token to Boardwalk", 0, 39, false));
-       /chance.add(new Card("Chance", "You have been elected Chairman of the board, pay each player $50", -50, -1, true));
-        chance.add(new Card("Chance", "Building Loan Matures, collect $150", 150, -1, false));
+        
+        chance.add(new Card("Jinkies", 00, "Advance to Go(Collect $200)", false));
+        chance.add(new Card("Jinkies", 00, "Advance to Illinois Ave. - if you pass Go, collect $200", false));
+        chance.add(new Card("Jinkies", 00, "Advance token to the nearest Utility.\nIf unowned, you may buy it from the Bank.\nIf owned, throw dice and pay owner a total of 10 times the amount shown.", false));
+        chance.add(new Card("Jinkies", 00, "Advance token to the nearest Railroad.\nIf unowned, you may buy it from the Bank.\nIf owned, pay the owner twice the amount that they are entitled", false));
+        chance.add(new Card("Jinkies", 00, "Advance token to the nearest Railroad.\nIf unowned, you may buy it from the Bank.\nIf owned, pay the owner twice the amount that they are entitled", false));
+        chance.add(new Card("Jinkies", 00, "Advance to St. Charles Place - if you pass Go, collect $200", false));
+        chance.add(new Card("Jinkies", 00, "Bank pays you dividend of $50", false));
+        chance.add(new Card("Jinkies", 00, "Get out of Jail free.", false));
+        chance.add(new Card("Jinkies", 00, "Go back 3 spaces", false));
+        chance.add(new Card("Jinkies", 00, "You are assessed for street repairs, pay $25 for each house and $100 for each hotel", false));
+        chance.add(new Card("Jinkies", 00, "Pay Poor tax of $15", false));
+        chance.add(new Card("Jinkies", 00, "Take a trip on the Reading Railroad - if you pass Go, collect $200", false));
+        chance.add(new Card("Jinkies", 00, "Take a walk on the Boardwalk - advance token to Boardwalk", false));
+        chance.add(new Card("Jinkies", 00, "You have been elected Chairman of the board, pay each player $50", false));
+        chance.add(new Card("Jinkies", 00, "Building Loan Matures, collect $150", false));
 	}
 }
