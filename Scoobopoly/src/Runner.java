@@ -10,50 +10,55 @@ public class Runner {
 		
 		fillBoard();
 		fillDecks();
+		
+		
 	}
 	
 	public static void fillBoard() {
 			
 			board.add(new Go("ClubHouse", 0));
 			board.add(new Estate("Gypsy Wagon", 1, 60, "Unowned", false, 0, "Brown"));
-		//Zoinks
-			board.add(new Estate("Witch's Hut", 4, 60, "Unowned", false, 0, "Brown"));
-			board.add(new Restaurant("Tiki Tub", 5, 100, "Unowned", false, 0, "Restaurant"));
-		//Jeepers	
-			board.add(new Estate("Gold City Mine", 7, 100, "Unowned", false, 0, "Azure"));
-		//Jinkies	
-			board.add(new Estate("Abandoned Airfield", 9, 100, "Unowned", false, 0, "Azure"));
-			board.add(new Estate("Sawmill", 10, 120, "Unowned", false, 0, "Azure"));
-		//Jail
-			board.add(new Estate("Graveyard of Ships", 12, 140, "Unowned", false, 0, "Pink"));
-			board.add(new Factory("Gas Station", 13, 150, "Unowned", false, 0, "Factory"));
-			board.add(new Estate("Wolf's End Lodge", 14, 140, "Unowned", false, 0, "Pink"));
-			board.add(new Estate("Cemetery", 15, 160, "Unowned", false, 0, "Pink"));
-			board.add(new Restaurant("Fruitmeir's", 16, 100, "Unowned", false, 0, "Restaurant"));
-			board.add(new Estate("Jone's Cheesery", 17, 180, "Unowned", false, 0, "Orange"));
-		//Zoinks
-			board.add(new Estate("Dinkley's Bookshop", 19, 180, "Unowned", false, 0, "Orange"));
-			board.add(new Estate("Blake's  Videorama", 20, 200, "Unowned", false, 0, "Orange"));
-		//FreeSpace
-			board.add(new Estate("Rocky Point Beach", 22, 220, "Unowned", false, 0, "Red"));
-		//Jinkies
-			board.add(new Estate("Brancusi Circus", 24, 220, "Unowned", false, 0, "Red"));
-			board.add(new Estate("Funland", 25, 240, "Unowned", false, 0, "Red"));
-			board.add(new Restaurant("Bloody Stake", 26, 100, "Unowned", false, 0, "Restaurant"));
-			board.add(new Estate("Burlington Library", 27, 260, "Unowned", false, 0, "Yellow"));
-			board.add(new Estate("Shady Sanitarium", 28, 260, "Unowned", false, 0, "Yellow"));
-			board.add(new Factory("Destrodio Corp", 29, 150, "Unowned", false, 0, "Factory"));
-			board.add(new Estate("Wax Muesem", 30, 280, "Unowned", false, 0, "Yellow"));
-		//GoToJail
-			board.add(new Estate("Sander's Mansion", 32, 300, "Unowned", false, 0, "Green"));
-			board.add(new Estate("Franken Castle", 33, 300, "Unowned", false, 0, "Green"));
-		//Zoinks
-			board.add(new Estate("Skull Island", 35, 320, "Unowned", false, 0, "Green"));
-			board.add(new Restaurant("Malt Shop", 36, 100, "Unowned", false, 0, "Restaurant"));
-		//Jinkies
-			board.add(new Estate("Kingston Mansion", 38, 350, "Unowned", false, 0, "Blue"));
-		//Jeepers
-			board.add(new Estate("Vasquez Castle", 40, 400, "Unowned", false, 0, "Blue"));
+			board.add(new CardSpace("Zoinks", 2, true));
+			board.add(new Estate("Witch's Hut", 3, 60, "Unowned", false, 0, "Brown"));
+			board.add(new Restaurant("Tiki Tub", 4, 200, "Unowned", false, 0, "Restaurant"));
+			board.add(new Jeepers("Jeepers", 5));
+			board.add(new Estate("Gold City Mine", 6, 100, "Unowned", false, 0, "Azure"));
+			board.add(new CardSpace("Jinkies", 7, false));	
+			board.add(new Estate("Abandoned Airfield", 8, 100, "Unowned", false, 0, "Azure"));
+			board.add(new Estate("Sawmill", 9, 120, "Unowned", false, 0, "Azure"));
+			
+			board.add(new Jail("Jail", 10));
+			board.add(new Estate("Graveyard of Ships", 11, 140, "Unowned", false, 0, "Pink"));
+			board.add(new Factory("Gas Station", 12, 150, "Unowned", false, 0, "Factory"));
+			board.add(new Estate("Wolf's End Lodge", 13, 140, "Unowned", false, 0, "Pink"));
+			board.add(new Estate("Cemetery", 14, 160, "Unowned", false, 0, "Pink"));
+			board.add(new Restaurant("Fruitmeir's", 15, 200, "Unowned", false, 0, "Restaurant"));
+			board.add(new Estate("Jone's Cheesery", 16, 180, "Unowned", false, 0, "Orange"));
+			board.add(new CardSpace("Zoinks", 7, true));
+			board.add(new Estate("Dinkley's Bookshop", 18, 180, "Unowned", false, 0, "Orange"));
+			board.add(new Estate("Blake's  Videorama", 19, 200, "Unowned", false, 0, "Orange"));
+			
+			board.add(new FreeSpace("Free Parking", 20));
+			board.add(new Estate("Rocky Point Beach", 21, 220, "Unowned", false, 0, "Red"));
+			board.add(new CardSpace("Jinkies", 22, false));
+			board.add(new Estate("Brancusi Circus", 23, 220, "Unowned", false, 0, "Red"));
+			board.add(new Estate("Funland", 24, 240, "Unowned", false, 0, "Red"));
+			board.add(new Restaurant("Bloody Stake", 25, 200, "Unowned", false, 0, "Restaurant"));
+			board.add(new Estate("Burlington Library", 26, 260, "Unowned", false, 0, "Yellow"));
+			board.add(new Estate("Shady Sanitarium", 27, 260, "Unowned", false, 0, "Yellow"));
+			board.add(new Factory("Destrodio Corp", 28, 150, "Unowned", false, 0, "Factory"));
+			board.add(new Estate("Wax Muesem", 29, 280, "Unowned", false, 0, "Yellow"));
+			
+			board.add(new GoToJail("Go To Jail", 30));
+			board.add(new Estate("Sander's Mansion", 31, 300, "Unowned", false, 0, "Green"));
+			board.add(new Estate("Franken Castle", 32, 300, "Unowned", false, 0, "Green"));
+			board.add(new CardSpace("Zoinks", 33, true));
+			board.add(new Estate("Skull Island", 34, 320, "Unowned", false, 0, "Green"));
+			board.add(new Restaurant("Malt Shop", 35, 200, "Unowned", false, 0, "Restaurant"));
+			board.add(new CardSpace("Jinkies", 36, false));
+			board.add(new Estate("Kingston Mansion", 37, 350, "Unowned", false, 0, "Blue"));
+			board.add(new Jeepers("Jeepers", 38));
+			board.add(new Estate("Vasquez Castle", 39, 400, "Unowned", false, 0, "Blue"));
 			
 	}
 	
