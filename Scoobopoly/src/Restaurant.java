@@ -4,7 +4,7 @@ public class Restaurant extends Property {
 	protected int price;
 	protected String owner;
 	protected boolean forSale;
-	protected int lodging;
+	protected int level;
 	protected String group;
 	
 	protected Restaurant(String n, int u, int p, String o, boolean fs, int l, String g) {
@@ -14,6 +14,6 @@ public class Restaurant extends Property {
 		price = p;
 		owner = o;
 		forSale = fs;
-		lodging = l;
+		level = l;
 	}
 }

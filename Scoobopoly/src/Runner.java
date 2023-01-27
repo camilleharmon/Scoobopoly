@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Runner {
 
@@ -8,10 +9,92 @@ public class Runner {
 	
 	public static void main(String[] args) {
 		
-		fillBoard();
+		//fillBoard();
+		makeBoard();
 		fillDecks();
 		
 		
+	}
+	
+	public static void makeBoard(){
+		
+		Scanner file = new Scanner(new File("Scoobopoly.txt"));
+		for(int i = 0; i<40; i++) {
+			
+			String type = file.next();
+			
+			if(type.equals("Estate")) {
+				
+				String name = file.next();
+				int num = file.nextInt();
+				int price = file.nextInt();
+				String owner = file.next();
+				boolean fs = file.nextBoolean();
+				int level = file.nextInt();
+				String group = file.next();
+				
+				board.add(new Estate(name, num, price, owner, fs, level, group));
+			}else if(type.equals("Factory")) {
+				
+				String name = file.next();
+				int num = file.nextInt();
+				int price = file.nextInt();
+				String owner = file.next();
+				boolean fs = file.nextBoolean();
+				int level = file.nextInt();
+				String group = file.next();
+				
+				board.add(new Factory(name, num, price, owner, fs, level, group));
+			}else if(type.equals("Restaurant")) {
+				
+				String name = file.next();
+				int num = file.nextInt();
+				int price = file.nextInt();
+				String owner = file.next();
+				boolean fs = file.nextBoolean();
+				int level = file.nextInt();
+				String group = file.next();
+				
+				board.add(new Estate(name, num, price, owner, fs, level, group));
+			}else if(type.equals("Go")) {
+				
+				String name = file.next();
+				int num = file.nextInt();
+				
+				board.add(new Go(name, num));
+			}else if(type.equals("Jail")) {
+				
+				String name = file.next();
+				int num = file.nextInt();
+				
+				board.add(new Jail(name, num));
+			}else if(type.equals("GoToJail")) {
+				
+				String name = file.next();
+				int num = file.nextInt();
+				
+				board.add(new GoToJail(name, num));
+			}else if(type.equals("FreeSpace")) {
+				
+				String name = file.next();
+				int num = file.nextInt();
+				
+				board.add(new FreeSpace(name, num));
+			}else if(type.equals("Jeepers")) {
+				
+				String name = file.next();
+				int num = file.nextInt();
+				
+				board.add(new Jeepers(name, num));
+			}else if(type.equals("CardSpace")) {
+				
+				String name = file.next();
+				int num = file.nextInt();
+				boolean iz = file.nextBoolean();
+				
+				board.add(new CardSpace(name, num, iz));
+			}
+		}
 	}
 	
 	public static void fillBoard() {

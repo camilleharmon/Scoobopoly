@@ -4,7 +4,7 @@ public class Estate extends Property{
 	protected int price;
 	protected String owner;
 	protected boolean forSale;
-	protected int lodging;
+	protected int level;
 	protected String group;
 	
 	protected Estate(String n, int u, int p, String o, boolean fs, int l, String g) {
@@ -14,7 +14,7 @@ public class Estate extends Property{
 		price = p;
 		owner = o;
 		forSale = fs;
-		lodging = l;
+		level = l;
 		group = g;
 	}
 	
