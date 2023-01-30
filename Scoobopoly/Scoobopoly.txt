@@ -10,14 +10,14 @@ Estate Abandoned_Airfield 8 100 Unowned false 0 Azure
 Estate Sawmill 9 120 Unowned false 0 Azure
 Jail Jail 10
 Estate Graveyard_of_Ships 11 140 Unowned false 0 Pink
-Factory Gas_Station 12 150 Unowned False 0 Factory
+Factory Gas_Station 12 150 Unowned false 0 Factory
 Estate Wolf's_End_Lodge 13 140 Unowned false 0 Pink
 Estate Cemetery 14 160 Unowned false 0 Pink
 Restaurant Fruitmeir's 15 200 Unowned false 0 Restaurant
 Estate Jone's_Cheesery 16 180 Unowned false 0 Orange
-CardSpace Zoinks 7 true
-Estate Dinkley's_Bookshop 18 180 Unowned false Orange
-Estate Blake's_Videorama 19 200 Unowned false Orange
+CardSpace Zoinks 17 true
+Estate Dinkley's_Bookshop 18 180 Unowned false 0 Orange
+Estate Blake's_Videorama 19 200 Unowned false 0 Orange
 FreeSpace Free_Parking 20
 Estate Rocky_Point_Beach 21 220 Unowned false 0 Red
 CardSpace Jinkies 22 false
@@ -35,6 +35,6 @@ CardSpace Zoinks 33 true
 Estate Skull_Island 34 320 Unowned false 0 Green
 Restaurant Malt_Shop 35 200 Unowned false 0 Restaurant
 CardSpace Jinkies 36 false
-Estate Kingston Mansion 37 350 Unowned false 0 Blue
+Estate Kingston_Mansion 37 350 Unowned false 0 Blue
 Jeepers Jeepers 38
 Estate Vasquez_Castle 39 400 Unowned false 0 Blue

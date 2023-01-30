@@ -1,24 +1,74 @@
 import java.util.ArrayList;
+import java.util.*;
 import java.util.Scanner;
+import java.io.*;
 
 public class Runner {
 
 	static ArrayList <Property> board = new ArrayList<Property>();
 	static ArrayList <Card> chance = new ArrayList<Card>();
 	static ArrayList <Card> communityChest = new ArrayList<Card>();
+	static Scanner file;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
-		//fillBoard();
+		chooseTheme();
 		makeBoard();
 		fillDecks();
 		
 		
 	}
 	
-	public static void makeBoard(){
+	public static void chooseTheme() throws IOException{
 		
-		Scanner file = new Scanner(new File("Scoobopoly.txt"));
+		Scanner userIntInput = new Scanner(System.in);
+		System.out.println("");
+        System.out.println("What theme would you like to play?");
+		System.out.println("   1) Classic");
+		System.out.println("   2) Scooboploy");
+
+		int theme = userIntInput.nextInt();
+
+		if(theme == 1) {				
+			
+			System.out.println("No, we're doin Scooby.");
+			file = new Scanner(new File("Scoobopoly.txt"));
+		}else if(theme == 2) {				
+			
+			System.out.println("Scooby it is!");
+			file = new Scanner(new File("Scoobopoly.txt"));
+		}else {				
+			System.out.println("Please chose a valid answer.");
+			chooseTheme();
+		}
+	}
+	
+	public static void makeBoard() throws IOException{
+		
+		System.out.println("Making board");
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Making board.");
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Making board..");
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Making board...");
+		
+		//Scanner file = new Scanner(new File("Scoobopoly.txt"));
 		for(int i = 0; i<40; i++) {
 			
 			String type = file.next();
@@ -95,56 +145,16 @@ public class Runner {
 				board.add(new CardSpace(name, num, iz));
 			}
 		}
+		
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Board Complete!");
 	}
-	
-	public static void fillBoard() {
-			
-			board.add(new Go("ClubHouse", 0));
-			board.add(new Estate("Gypsy Wagon", 1, 60, "Unowned", false, 0, "Brown"));
-			board.add(new CardSpace("Zoinks", 2, true));
-			board.add(new Estate("Witch's Hut", 3, 60, "Unowned", false, 0, "Brown"));
-			board.add(new Restaurant("Tiki Tub", 4, 200, "Unowned", false, 0, "Restaurant"));
-			board.add(new Jeepers("Jeepers", 5));
-			board.add(new Estate("Gold City Mine", 6, 100, "Unowned", false, 0, "Azure"));
-			board.add(new CardSpace("Jinkies", 7, false));	
-			board.add(new Estate("Abandoned Airfield", 8, 100, "Unowned", false, 0, "Azure"));
-			board.add(new Estate("Sawmill", 9, 120, "Unowned", false, 0, "Azure"));
-			
-			board.add(new Jail("Jail", 10));
-			board.add(new Estate("Graveyard of Ships", 11, 140, "Unowned", false, 0, "Pink"));
-			board.add(new Factory("Gas Station", 12, 150, "Unowned", false, 0, "Factory"));
-			board.add(new Estate("Wolf's End Lodge", 13, 140, "Unowned", false, 0, "Pink"));
-			board.add(new Estate("Cemetery", 14, 160, "Unowned", false, 0, "Pink"));
-			board.add(new Restaurant("Fruitmeir's", 15, 200, "Unowned", false, 0, "Restaurant"));
-			board.add(new Estate("Jone's Cheesery", 16, 180, "Unowned", false, 0, "Orange"));
-			board.add(new CardSpace("Zoinks", 7, true));
-			board.add(new Estate("Dinkley's Bookshop", 18, 180, "Unowned", false, 0, "Orange"));
-			board.add(new Estate("Blake's  Videorama", 19, 200, "Unowned", false, 0, "Orange"));
-			
-			board.add(new FreeSpace("Free Parking", 20));
-			board.add(new Estate("Rocky Point Beach", 21, 220, "Unowned", false, 0, "Red"));
-			board.add(new CardSpace("Jinkies", 22, false));
-			board.add(new Estate("Brancusi Circus", 23, 220, "Unowned", false, 0, "Red"));
-			board.add(new Estate("Funland", 24, 240, "Unowned", false, 0, "Red"));
-			board.add(new Restaurant("Bloody Stake", 25, 200, "Unowned", false, 0, "Restaurant"));
-			board.add(new Estate("Burlington Library", 26, 260, "Unowned", false, 0, "Yellow"));
-			board.add(new Estate("Shady Sanitarium", 27, 260, "Unowned", false, 0, "Yellow"));
-			board.add(new Factory("Destrodio Corp", 28, 150, "Unowned", false, 0, "Factory"));
-			board.add(new Estate("Wax Muesem", 29, 280, "Unowned", false, 0, "Yellow"));
-			
-			board.add(new GoToJail("Go To Jail", 30));
-			board.add(new Estate("Sander's Mansion", 31, 300, "Unowned", false, 0, "Green"));
-			board.add(new Estate("Franken Castle", 32, 300, "Unowned", false, 0, "Green"));
-			board.add(new CardSpace("Zoinks", 33, true));
-			board.add(new Estate("Skull Island", 34, 320, "Unowned", false, 0, "Green"));
-			board.add(new Restaurant("Malt Shop", 35, 200, "Unowned", false, 0, "Restaurant"));
-			board.add(new CardSpace("Jinkies", 36, false));
-			board.add(new Estate("Kingston Mansion", 37, 350, "Unowned", false, 0, "Blue"));
-			board.add(new Jeepers("Jeepers", 38));
-			board.add(new Estate("Vasquez Castle", 39, 400, "Unowned", false, 0, "Blue"));
-			
-	}
-	
+		
 	public static void fillDecks() {
 		
 		communityChest.add(new Card("Zoinks", 00, "Advance to Go(Collect $200))", false));
