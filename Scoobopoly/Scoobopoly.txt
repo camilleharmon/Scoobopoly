@@ -2,7 +2,7 @@ Go Clubhouse 0
 Estate Gypsy_Wagon 1 60 Unowned false 0 Brown
 CardSpace Zoinks 2 true
 Estate Witch's_Hut 3 60 Unowned false 0 Brown
-Restaurant Tiki_Tub 4 200 Unowned false 0 Azure
+Restaurant Tiki_Tub 4 200 Unowned false 0 Restaurant
 Jeepers Jeepers 5
 Estate Gold_City_Mine 6 100 Unowned false 0 Azure
 CardSpace Jinkies 7 false

@@ -10,7 +10,9 @@ public class Runner {
 	static ArrayList <Card> communityChest = new ArrayList<Card>();
 	static ArrayList <Player> playersList = new ArrayList<Player>();
 	static Scanner file;
+	static int theme;
 	static int numPlayers;
+	static int charnum = 1;
 	static ArrayList <Property> player1 = new ArrayList<Property>();
 	static ArrayList <Property> player2 = new ArrayList<Property>();
 	static ArrayList <Property> player3 = new ArrayList<Property>();
@@ -29,61 +31,75 @@ public class Runner {
 		
 	}
 	
+	public static void rollDice() {
+		
+		int dice = (int)(Math.random() * 6)+1;
+		System.out.println("You rolled a " + dice + ".");
+	}
+	
+	public static void characterSelect() {
+		
+		Scanner userIntInput = new Scanner(System.in);
+		int counter = 1;
+		
+		if(theme == 2) {
+			
+			for(int j = 0; j < scoobyCharacters.size(); j++) {
+				
+				System.out.println("   " + counter + ") " + scoobyCharacters.get(j));
+				counter++;
+			}
+			charnum = userIntInput.nextInt();
+			counter = 0;
+			
+			if(charnum == 0 || charnum > scoobyCharacters.size()) {
+				
+				System.out.println("Please enter a valid answer.");
+				characterSelect();
+			}
+		}else {
+			
+			for(int j = 0; j < classicCharacters.size(); j++) {
+				
+				System.out.println("   " + counter + ") " + classicCharacters.get(j));
+				counter++;
+			}
+			charnum = userIntInput.nextInt();
+			counter = 0;
+			
+			if(charnum == 0 || charnum > classicCharacters.size()) {
+				
+				System.out.println("Please enter a valid answer.");
+				characterSelect();
+			}
+		}
+	}
+	
 	public static void createCharacters() throws IOException{
 		
 		Scanner userInput = new Scanner(System.in);
 		Scanner userIntInput = new Scanner(System.in);
 		int counter = 1;
-		boolean ask = true;
-		String characters = ";"
-
-		playersList.add(new Player("Name", "Character", null, 0, false));
+		String character = " ";
 		
-		for(int i = 0; i <= numPlayers; i++) {
+		for(int i = 1; i <= numPlayers; i++) {
 			
 			System.out.println("What is your name?");
-			int name = userInput.nextInt();
+			String name = userInput.next();
 			
-			if(file.equals("Scooby.txt")) {
+			if(theme == 2) {
 				
-				while(ask) {
-					
-					for(int j = 0; j < scoobyCharacters.size(); j++) {
-						
-						System.out.println("   " + counter + ") " + scoobyCharacters.get(j));
-						counter++;
-					}
-					int charnum = userIntInput.nextInt();
-					ask = false;
-				}
+				characterSelect();
+				System.out.println(scoobyCharacters.get(charnum - 1) + " selected.");
+				character = scoobyCharacters.get(charnum - 1);
+				scoobyCharacters.remove(charnum-1);
 				
-				if(charnum > scoobyCharacters.size()) {
-					
-					System.out.println("Please choose a valid answer.");
-					ask = true;
-				}else if(charnum == 1) {				
-					
-					System.out.println(scoobyCharacters.get(0));
-					characters = "scoobyCharacters.get(0)";
-				}else if(charnum == 2) {				
-					
-					System.out.println(scoobyCharacters.get(1));
-					characters = "scoobyCharacters.get(0)";
-				}else if(charnum == 3) {				
-					
-					System.out.println(scoobyCharacters.get(2));
-					characters = "scoobyCharacters.get(0)";
-				}else if(charnum == 4) {				
-					
-					System.out.println(scoobyCharacters.get(3));
-					characters = "scoobyCharacters.get(0)";
-				}else{				
-					System.out.println(scoobyCharacters.get(4));
-					characters = "scoobyCharacters.get(0)";
-				}
 			}else{
 				
-				
+				characterSelect();
+				System.out.println(classicCharacters.get(charnum - 1) + " selected.");
+				character = classicCharacters.get(charnum - 1);
+				classicCharacters.remove(charnum-1);
 			}
 			
 			playersList.add(new Player(name, character, null, 0, false));
@@ -129,12 +145,12 @@ public class Runner {
 		System.out.println("   1) Classic");
 		System.out.println("   2) Scooboploy");
 
-		int theme = userIntInput.nextInt();
+		theme = userIntInput.nextInt();
 
 		if(theme == 1) {				
 			
-			System.out.println("No, we're doin Scooby.");
-			file = new Scanner(new File("Scoobopoly.txt"));
+			System.out.println("Basic.");
+			file = new Scanner(new File("Classic.txt"));
 		}else if(theme == 2) {				
 			
 			System.out.println("Scooby it is!");
@@ -164,17 +180,17 @@ public class Runner {
 		
 		System.out.print("Making board");
 		
-//		for(int i = 0; i < 3; i++) {
-//			
-//			try {
-//				Thread.sleep(1000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			System.out.print(".");
-//		}
-//		System.out.println("");
+		for(int i = 0; i < 3; i++) {
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.print(".");
+		}
+		System.out.println("");
 		
 		for(int i = 0; i<40; i++) {
 			
@@ -253,13 +269,14 @@ public class Runner {
 			}
 		}
 		
-//		try {
-//			Thread.sleep(2000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println("Board Complete!");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Board Complete!");
+		System.out.println("");
 	}
 		
 	public static void fillDecks() {
