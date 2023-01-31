@@ -8,7 +8,7 @@ public class Player {
 	protected int bank;
 	protected boolean jail;
 	//
-	protected Player(String n, String c, ArrayList a, int b, boolean j) {
+	protected Player(String n, String c, ArrayList<Property> a, int b, boolean j) {
 		
 		name = n;
 		character = c;

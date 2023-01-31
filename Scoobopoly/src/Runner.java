@@ -8,15 +8,117 @@ public class Runner {
 	static ArrayList <Property> board = new ArrayList<Property>();
 	static ArrayList <Card> chance = new ArrayList<Card>();
 	static ArrayList <Card> communityChest = new ArrayList<Card>();
+	static ArrayList <Player> playersList = new ArrayList<Player>();
 	static Scanner file;
+	static int numPlayers;
+	static ArrayList <Property> player1 = new ArrayList<Property>();
+	static ArrayList <Property> player2 = new ArrayList<Property>();
+	static ArrayList <Property> player3 = new ArrayList<Property>();
+	static ArrayList <Property> player4 = new ArrayList<Property>();
+	static ArrayList <String> scoobyCharacters = new ArrayList<String>();
+	static ArrayList <String> classicCharacters = new ArrayList<String>();
 	
 	public static void main(String[] args) throws IOException {
 		
 		chooseTheme();
-		makeBoard();
+		choosePlayers();
+		fillBoard();
 		fillDecks();
+		fillCharacters();
+		createCharacters();
 		
+	}
+	
+	public static void createCharacters() throws IOException{
 		
+		Scanner userInput = new Scanner(System.in);
+		Scanner userIntInput = new Scanner(System.in);
+		int counter = 1;
+		boolean ask = true;
+		String characters = ";"
+
+		playersList.add(new Player("Name", "Character", null, 0, false));
+		
+		for(int i = 0; i <= numPlayers; i++) {
+			
+			System.out.println("What is your name?");
+			int name = userInput.nextInt();
+			
+			if(file.equals("Scooby.txt")) {
+				
+				while(ask) {
+					
+					for(int j = 0; j < scoobyCharacters.size(); j++) {
+						
+						System.out.println("   " + counter + ") " + scoobyCharacters.get(j));
+						counter++;
+					}
+					int charnum = userIntInput.nextInt();
+					ask = false;
+				}
+				
+				if(charnum > scoobyCharacters.size()) {
+					
+					System.out.println("Please choose a valid answer.");
+					ask = true;
+				}else if(charnum == 1) {				
+					
+					System.out.println(scoobyCharacters.get(0));
+					characters = "scoobyCharacters.get(0)";
+				}else if(charnum == 2) {				
+					
+					System.out.println(scoobyCharacters.get(1));
+					characters = "scoobyCharacters.get(0)";
+				}else if(charnum == 3) {				
+					
+					System.out.println(scoobyCharacters.get(2));
+					characters = "scoobyCharacters.get(0)";
+				}else if(charnum == 4) {				
+					
+					System.out.println(scoobyCharacters.get(3));
+					characters = "scoobyCharacters.get(0)";
+				}else{				
+					System.out.println(scoobyCharacters.get(4));
+					characters = "scoobyCharacters.get(0)";
+				}
+			}else{
+				
+				
+			}
+			
+			playersList.add(new Player(name, character, null, 0, false));
+		}
+	}
+	
+	public static void choosePlayers() throws IOException{
+		
+		Scanner userIntInput = new Scanner(System.in);
+
+		System.out.println("");
+        System.out.println("How many players are there?");
+		System.out.println("   1 Player");
+		System.out.println("   2 Players");
+		System.out.println("   3 Players");
+		System.out.println("   4 Players");
+
+		int num = userIntInput.nextInt();
+		
+		if(num == 1) {				
+			
+			System.out.println("1 Player Selected");
+			numPlayers = 1;
+		}else if(num == 2) {				
+			
+			System.out.println("2 Players Selected");
+			numPlayers = 2;
+		}else if(num == 3) {				
+			
+			System.out.println("3 Players Selected");
+			numPlayers = 3;
+		}else{				
+			System.out.println("4 Players Selected");
+			numPlayers = 4;
+		}
 	}
 	
 	public static void chooseTheme() throws IOException{
@@ -38,37 +140,42 @@ public class Runner {
 			System.out.println("Scooby it is!");
 			file = new Scanner(new File("Scoobopoly.txt"));
 		}else {				
-			System.out.println("Please chose a valid answer.");
+			System.out.println("Please choose a valid answer.");
 			chooseTheme();
 		}
 	}
 	
-	public static void makeBoard() throws IOException{
+	public static void fillCharacters() {
 		
-		System.out.println("Making board");
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("Making board.");
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("Making board..");
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("Making board...");
+		scoobyCharacters.add(new String("Fred"));
+		scoobyCharacters.add(new String("Daphne"));
+		scoobyCharacters.add(new String("Velma"));
+		scoobyCharacters.add(new String("Shaggy"));
+		scoobyCharacters.add(new String("Scooby"));
+
+		classicCharacters.add(new String("Top Hat"));
+		classicCharacters.add(new String("Scottie Dog"));
+		classicCharacters.add(new String("Cat"));
+		classicCharacters.add(new String("Racecar"));
+		classicCharacters.add(new String("Thimble"));
+	}
+	
+	public static void fillBoard() throws IOException{
 		
-		//Scanner file = new Scanner(new File("Scoobopoly.txt"));
+		System.out.print("Making board");
+		
+//		for(int i = 0; i < 3; i++) {
+//			
+//			try {
+//				Thread.sleep(1000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			System.out.print(".");
+//		}
+//		System.out.println("");
+		
 		for(int i = 0; i<40; i++) {
 			
 			String type = file.next();
@@ -146,13 +253,13 @@ public class Runner {
 			}
 		}
 		
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("Board Complete!");
+//		try {
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		System.out.println("Board Complete!");
 	}
 		
 	public static void fillDecks() {
