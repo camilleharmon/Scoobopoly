@@ -19,6 +19,18 @@ public class Runner {
 	static ArrayList <Property> player4 = new ArrayList<Property>();
 	static ArrayList <String> scoobyCharacters = new ArrayList<String>();
 	static ArrayList <String> classicCharacters = new ArrayList<String>();
+	public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001b[34;1m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+    public static final String ANSI_HGREEN = "\u001b[42;1m";
+    public static final String ANSI_MAGENTA = "\u001b[35m";
+    public static final String ANSI_ORANGE = "\033[48;2;255;165;0m";
 	
 	public static void main(String[] args) throws IOException {
 		
@@ -30,6 +42,8 @@ public class Runner {
 		createCharacters();
 		
 	}
+	
+	
 	
 	public static void rollDice() {
 		
@@ -102,7 +116,7 @@ public class Runner {
 				classicCharacters.remove(charnum-1);
 			}
 			
-			playersList.add(new Player(name, character, null, 0, false));
+			playersList.add(new Player(name, character, null, 0, false, false));
 		}
 	}
 	
@@ -163,11 +177,11 @@ public class Runner {
 	
 	public static void fillCharacters() {
 		
-		scoobyCharacters.add(new String("Fred"));
-		scoobyCharacters.add(new String("Daphne"));
-		scoobyCharacters.add(new String("Velma"));
-		scoobyCharacters.add(new String("Shaggy"));
-		scoobyCharacters.add(new String("Scooby"));
+		scoobyCharacters.add(new String(ANSI_BLUE + "Fred" + ANSI_RESET));
+		scoobyCharacters.add(new String(ANSI_MAGENTA + "Daphne" + ANSI_RESET));
+		scoobyCharacters.add(new String(ANSI_ORANGE +"Velma" + ANSI_RESET));
+		scoobyCharacters.add(new String(ANSI_GREEN + "Shaggy" + ANSI_RESET));
+		scoobyCharacters.add(new String(ANSI_YELLOW + "Scooby" + ANSI_RESET));
 
 		classicCharacters.add(new String("Top Hat"));
 		classicCharacters.add(new String("Scottie Dog"));
@@ -180,16 +194,16 @@ public class Runner {
 		
 		System.out.print("Making board");
 		
-		for(int i = 0; i < 3; i++) {
-			
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.print(".");
-		}
+//		for(int i = 0; i < 3; i++) {
+//			
+//			try {
+//				Thread.sleep(1000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			System.out.print(".");
+//		}
 		System.out.println("");
 		
 		for(int i = 0; i<40; i++) {
@@ -269,12 +283,12 @@ public class Runner {
 			}
 		}
 		
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		System.out.println("Board Complete!");
 		System.out.println("");
 	}

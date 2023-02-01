@@ -7,14 +7,16 @@ public class Player {
 	protected ArrayList <Property> assets = new ArrayList<Property>();
 	protected int bank;
 	protected boolean jail;
+	protected boolean bankrupt;
 	//
-	protected Player(String n, String c, ArrayList<Property> a, int b, boolean j) {
+	protected Player(String n, String c, ArrayList<Property> a, int b, boolean j, boolean ba) {
 		
 		name = n;
 		character = c;
 		assets = a;
 		bank = b;
 		jail = j;
+		bankrupt = ba;
 	}
 
 	public String getName() {
