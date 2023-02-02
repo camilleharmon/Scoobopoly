@@ -41,10 +41,15 @@ public class Runner {
     public static final String PINK = "\u001b[45;1m";
     public static final String LBLUE = "\u001b[46;1m";
     public static final String WHITE = "\u001b[47;1m";
+    public static final String WHITEW = "\u001b[48;2;305;165;0m";
+    
+    public static final String BOLD = "\u001b[1m";
+    public static final String UNDERLINED = "\u001b[4m";
+    public static final String REVERSE = "\u001b[7m;1m";
 	
 	public static void main(String[] args) throws IOException {
 		
-		System.out.println(WHITE + "COLOR" + ANSI_RESET);
+		System.out.println(WHITEW + "COLOR" + ANSI_RESET);
 		chooseTheme();
 		choosePlayers();
 		fillBoard();
