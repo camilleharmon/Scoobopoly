@@ -5,6 +5,8 @@ import java.io.*;
 
 public class Runner {
 
+	static boolean game = true;
+	static int dice;
 	static ArrayList <Property> board = new ArrayList<Property>();
 	static ArrayList <Card> chance = new ArrayList<Card>();
 	static ArrayList <Card> communityChest = new ArrayList<Card>();
@@ -30,10 +32,19 @@ public class Runner {
     public static final String ANSI_WHITE = "\u001B[37m";
     public static final String ANSI_HGREEN = "\u001b[42;1m";
     public static final String ANSI_MAGENTA = "\u001b[35m";
-    public static final String ANSI_ORANGE = "\033[48;2;255;165;0m";
+    
+    public static final String BLUE = "\u001b[44;1m";
+    public static final String GREEN = "\u001b[42;1m";
+    public static final String YELLOW = "\u001b[43;1m";
+    public static final String RED = "\u001b[41;1m";
+    public static final String ORANGE = "\033[48;2;255;165;0m";
+    public static final String PINK = "\u001b[45;1m";
+    public static final String LBLUE = "\u001b[46;1m";
+    public static final String WHITE = "\u001b[47;1m";
 	
 	public static void main(String[] args) throws IOException {
 		
+		System.out.println(WHITE + "COLOR" + ANSI_RESET);
 		chooseTheme();
 		choosePlayers();
 		fillBoard();
@@ -43,11 +54,33 @@ public class Runner {
 		
 	}
 	
+	public static void display(int player) {
+		
+		System.out.println("______________________________________________________");
+		System.out.println(playersList.get(player).getCharacter());
+		System.out.println("	Bank: " + playersList.get(player).getBank());
+		System.out.println("                    Assets");
+		
+		for(int i = 0; i < playersList.get(player).getAssets().size(); i++) {
+			
+			
+		}
+	}
 	
+	public static void gameOn() {
+		
+		while(true) {
+			
+			if(playersList.get(0).isBankrupt() == false) {
+				
+				rollDice();
+			}
+		}
+	}
 	
 	public static void rollDice() {
 		
-		int dice = (int)(Math.random() * 6)+1;
+		dice = (int)(Math.random() * 6)+1;
 		System.out.println("You rolled a " + dice + ".");
 	}
 	
@@ -177,17 +210,17 @@ public class Runner {
 	
 	public static void fillCharacters() {
 		
-		scoobyCharacters.add(new String(ANSI_BLUE + "Fred" + ANSI_RESET));
+		scoobyCharacters.add(new String(ANSI_CYAN + "Fred" + ANSI_RESET));
 		scoobyCharacters.add(new String(ANSI_MAGENTA + "Daphne" + ANSI_RESET));
-		scoobyCharacters.add(new String(ANSI_ORANGE +"Velma" + ANSI_RESET));
+		scoobyCharacters.add(new String(ANSI_RED +"Velma" + ANSI_RESET));
 		scoobyCharacters.add(new String(ANSI_GREEN + "Shaggy" + ANSI_RESET));
 		scoobyCharacters.add(new String(ANSI_YELLOW + "Scooby" + ANSI_RESET));
 
-		classicCharacters.add(new String("Top Hat"));
-		classicCharacters.add(new String("Scottie Dog"));
-		classicCharacters.add(new String("Cat"));
-		classicCharacters.add(new String("Racecar"));
-		classicCharacters.add(new String("Thimble"));
+		classicCharacters.add(new String(ANSI_CYAN + "Top Hat" + ANSI_RESET));
+		classicCharacters.add(new String(ANSI_MAGENTA + "Scottie Dog" + ANSI_RESET));
+		classicCharacters.add(new String(ANSI_RED + "Racecar" + ANSI_RESET));
+		classicCharacters.add(new String(ANSI_GREEN + "Cat" + ANSI_RESET));
+		classicCharacters.add(new String(ANSI_YELLOW + "Thimble" + ANSI_RESET));
 	}
 	
 	public static void fillBoard() throws IOException{
@@ -219,6 +252,7 @@ public class Runner {
 				boolean fs = file.nextBoolean();
 				int level = file.nextInt();
 				String group = file.next();
+				String color = file.next();
 				
 				board.add(new Estate(name, num, price, owner, fs, level, group));
 			}else if(type.equals("Factory")) {
@@ -295,37 +329,37 @@ public class Runner {
 		
 	public static void fillDecks() {
 		
-		communityChest.add(new Card("Zoinks", 00, "Advance to Go(Collect $200))", false));
-        communityChest.add(new Card("Zoinks", 00, "Bank Error in your favor - collect $200", false));
-        communityChest.add(new Card("Zoinks", 00, "Doctors's fees - Pay $50", false));
-        communityChest.add(new Card("Zoinks", 00, "Get Out of Jail Free", false));
-        communityChest.add(new Card("Zoinks", 00, "Go Directly to Jail - Do not Pass Go, do not collect $200", false));
-        communityChest.add(new Card("Zoinks", 00, "Grand opening of the Opera, collect $50 from each player", false));
-        communityChest.add(new Card("Zoinks", 00, "Income Tax Refund - Collect $20", false));
-        communityChest.add(new Card("Zoinks", 00, "Life Insurance Matures, collect $100", false));
-        communityChest.add(new Card("Zoinks", 00, "Pay Hospital Fee of $100", false));
-        communityChest.add(new Card("Zoinks", 00, "Pay School Fee of $50", false));
-        communityChest.add(new Card("Zoinks", 00, "You are assessed for Street Repairs - pay $40 per house, $115 per Hotel", false));
-        communityChest.add(new Card("Zoinks", 00, "You have won second prize in a Beauty contest, collect $10", false));
-        communityChest.add(new Card("Zoinks", 00, "You inherit $100", false));
-        communityChest.add(new Card("Zoinks", 00, "From sale of Stock you get $50", false));
-        communityChest.add(new Card("Zoinks", 00, "XMAS Fund Matures, collect $100", false));
+		communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "Advance to Go(Collect $200))", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "Bank Error in your favor - collect $200", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "Doctors's fees - Pay $50", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "Get Out of Jail Free", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "Go Directly to Jail - Do not Pass Go, do not collect $200", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "Grand opening of the Opera, collect $50 from each player", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "Income Tax Refund - Collect $20", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "Life Insurance Matures, collect $100", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "Pay Hospital Fee of $100", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "Pay School Fee of $50", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "You are assessed for Street Repairs - pay $40 per house, $115 per Hotel", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "You have won second prize in a Beauty contest, collect $10", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "You inherit $100", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "From sale of Stock you get $50", false));
+        communityChest.add(new Card(ANSI_GREEN + "Zoinks" + ANSI_RESET, 00, "XMAS Fund Matures, collect $100", false));
         
         
-        chance.add(new Card("Jinkies", 00, "Advance to Go(Collect $200)", false));
-        chance.add(new Card("Jinkies", 00, "Advance to Illinois Ave. - if you pass Go, collect $200", false));
-        chance.add(new Card("Jinkies", 00, "Advance token to the nearest Utility.\nIf unowned, you may buy it from the Bank.\nIf owned, throw dice and pay owner a total of 10 times the amount shown.", false));
-        chance.add(new Card("Jinkies", 00, "Advance token to the nearest Railroad.\nIf unowned, you may buy it from the Bank.\nIf owned, pay the owner twice the amount that they are entitled", false));
-        chance.add(new Card("Jinkies", 00, "Advance token to the nearest Railroad.\nIf unowned, you may buy it from the Bank.\nIf owned, pay the owner twice the amount that they are entitled", false));
-        chance.add(new Card("Jinkies", 00, "Advance to St. Charles Place - if you pass Go, collect $200", false));
-        chance.add(new Card("Jinkies", 00, "Bank pays you dividend of $50", false));
-        chance.add(new Card("Jinkies", 00, "Get out of Jail free.", false));
-        chance.add(new Card("Jinkies", 00, "Go back 3 spaces", false));
-        chance.add(new Card("Jinkies", 00, "You are assessed for street repairs, pay $25 for each house and $100 for each hotel", false));
-        chance.add(new Card("Jinkies", 00, "Pay Poor tax of $15", false));
-        chance.add(new Card("Jinkies", 00, "Take a trip on the Reading Railroad - if you pass Go, collect $200", false));
-        chance.add(new Card("Jinkies", 00, "Take a walk on the Boardwalk - advance token to Boardwalk", false));
-        chance.add(new Card("Jinkies", 00, "You have been elected Chairman of the board, pay each player $50", false));
-        chance.add(new Card("Jinkies", 00, "Building Loan Matures, collect $150", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Advance to Go(Collect $200)", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Advance to Illinois Ave. - if you pass Go, collect $200", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Advance token to the nearest Utility.\nIf unowned, you may buy it from the Bank.\nIf owned, throw dice and pay owner a total of 10 times the amount shown.", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Advance token to the nearest Railroad.\nIf unowned, you may buy it from the Bank.\nIf owned, pay the owner twice the amount that they are entitled", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Advance token to the nearest Railroad.\nIf unowned, you may buy it from the Bank.\nIf owned, pay the owner twice the amount that they are entitled", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Advance to St. Charles Place - if you pass Go, collect $200", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Bank pays you dividend of $50", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Get out of Jail free.", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Go back 3 spaces", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "You are assessed for street repairs, pay $25 for each house and $100 for each hotel", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Pay Poor tax of $15", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Take a trip on the Reading Railroad - if you pass Go, collect $200", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Take a walk on the Boardwalk - advance token to Boardwalk", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "You have been elected Chairman of the board, pay each player $50", false));
+        chance.add(new Card(ANSI_RED + "Jinkies" + ANSI_RESET, 00, "Building Loan Matures, collect $150", false));
 	}
 }

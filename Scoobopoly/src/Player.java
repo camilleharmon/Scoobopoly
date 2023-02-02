@@ -58,6 +58,14 @@ public class Player {
 	public void setJail(boolean jail) {
 		this.jail = jail;
 	}
+
+	public boolean isBankrupt() {
+		return bankrupt;
+	}
+
+	public void setBankrupt(boolean bankrupt) {
+		this.bankrupt = bankrupt;
+	}
 	
 	
 }
