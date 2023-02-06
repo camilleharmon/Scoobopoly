@@ -15,10 +15,10 @@ public class Runner {
 	static int theme;
 	static int numPlayers;
 	static int charnum = 1;
-	static ArrayList <Property> player1 = new ArrayList<Property>();
-	static ArrayList <Property> player2 = new ArrayList<Property>();
-	static ArrayList <Property> player3 = new ArrayList<Property>();
-	static ArrayList <Property> player4 = new ArrayList<Property>();
+	static ArrayList <Property> player1Inventory = new ArrayList<Property>();
+	static ArrayList <Property> player2Inventory = new ArrayList<Property>();
+	static ArrayList <Property> player3Inventory = new ArrayList<Property>();
+	static ArrayList <Property> player4Inventory = new ArrayList<Property>();
 	static ArrayList <String> scoobyCharacters = new ArrayList<String>();
 	static ArrayList <String> classicCharacters = new ArrayList<String>();
 	public static final String ANSI_RESET = "\u001B[0m";
@@ -56,19 +56,26 @@ public class Runner {
 		fillDecks();
 		fillCharacters();
 		createCharacters();
-		
+		display(0);
 	}
 	
 	public static void display(int player) {
 		
 		System.out.println("______________________________________________________");
 		System.out.println(playersList.get(player).getCharacter());
-		System.out.println("	Bank: " + playersList.get(player).getBank());
+		System.out.println("Bank: " + playersList.get(player).getBank());
+		System.out.println("Jail Status: " + playersList.get(player).isJail());
 		System.out.println("                    Assets");
 		
-		for(int i = 0; i < playersList.get(player).getAssets().size(); i++) {
+		if(playersList.get(player).getInventory() < 1) {
 			
+			System.out.println("No properties owned");
+		}else {
 			
+			for(int i = 0; i < playersList.get(player).getAssets().size(); i++) {
+				
+				System.out.println(playersList.get(player).getAssets().get(i));
+			}
 		}
 	}
 	
@@ -133,6 +140,7 @@ public class Runner {
 		Scanner userIntInput = new Scanner(System.in);
 		int counter = 1;
 		String character = " ";
+		String inventory = " ";
 		
 		for(int i = 1; i <= numPlayers; i++) {
 			
@@ -154,7 +162,21 @@ public class Runner {
 				classicCharacters.remove(charnum-1);
 			}
 			
-			playersList.add(new Player(name, character, null, 0, false, false));
+			if(i == 1) {
+				
+				inventory = "player1Inventory";
+			}else if(i == 2) {
+				
+				inventory = "player2Inventory";
+			}else if(i == 3) {
+				
+				inventory = "player3Inventory";
+			}else{
+				
+				inventory = "player4Inventory";
+			}
+			
+			playersList.add(new Player(name, character, inventory, 0, false, false));
 		}
 	}
 	
@@ -257,7 +279,7 @@ public class Runner {
 				boolean fs = file.nextBoolean();
 				int level = file.nextInt();
 				String group = file.next();
-				String color = file.next();
+				//String color = file.next();
 				
 				board.add(new Estate(name, num, price, owner, fs, level, group));
 			}else if(type.equals("Factory")) {

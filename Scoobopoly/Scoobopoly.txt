@@ -1,5 +1,5 @@
 Go Clubhouse 0
-Estate Gypsy_Wagon 1 60 Unowned false 0 Brown 
+Estate Gypsy_Wagon 1 60 Unowned false 0 Brown
 CardSpace Zoinks 2 true
 Estate Witch's_Hut 3 60 Unowned false 0 Brown
 Restaurant Tiki_Tub 4 200 Unowned false 0 Restaurant
