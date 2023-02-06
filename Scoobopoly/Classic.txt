@@ -1,40 +1,40 @@
 Go Go 0
-Estate Mediterranean_Avenue 1 60 Unowned false 0 Brown
+Estate Mediterranean_Avenue 1 60 5 false 0 Brown
 CardSpace Community_Chest 2 true
-Estate Baltic_Avenue 3 60 Unowned false 0 Brown
-Restaurant Reading_Railroad 4 200 Unowned false 0 Azure
+Estate Baltic_Avenue 3 60 5 false 0 Brown
+Restaurant Reading_Railroad 4 200 5 false 0 Azure
 Jeepers Income_Tax 5
-Estate Oriental_Avenue 6 100 Unowned false 0 Azure
+Estate Oriental_Avenue 6 100 5 false 0 Azure
 CardSpace Chance 7 false
-Estate Vermont_Avenue 8 100 Unowned false 0 Azure
-Estate Connecticut_Avenue 9 120 Unowned false 0 Azure
+Estate Vermont_Avenue 8 100 5 false 0 Azure
+Estate Connecticut_Avenue 9 120 5 false 0 Azure
 Jail Jail 10
-Estate St._Charles_Place 11 140 Unowned false 0 Pink
-Factory Electric_Company 12 150 Unowned false 0 Factory
-Estate States_Avenue 13 140 Unowned false 0 Pink
-Estate Virginia_Avenue 14 160 Unowned false 0 Pink
-Restaurant Pennsylvania_Railroad 15 200 Unowned false 0 Restaurant
-Estate St._James_Place 16 180 Unowned false 0 Orange
+Estate St._Charles_Place 11 140 5 false 0 Pink
+Factory Electric_Company 12 150 5 false 0 Factory
+Estate States_Avenue 13 140 5 false 0 Pink
+Estate Virginia_Avenue 14 160 5 false 0 Pink
+Restaurant Pennsylvania_Railroad 15 200 5 false 0 Restaurant
+Estate St._James_Place 16 180 5 false 0 Orange
 CardSpace Community_Chest 17 true
-Estate Tennessee_Avenue 18 180 Unowned false 0 Orange
-Estate New_York_Avenue 19 200 Unowned false 0 Orange
+Estate Tennessee_Avenue 18 180 5 false 0 Orange
+Estate New_York_Avenue 19 200 5 false 0 Orange
 FreeSpace Free_Parking 20
-Estate Kentucky_Avenue 21 220 Unowned false 0 Red
+Estate Kentucky_Avenue 21 220 5 false 0 Red
 CardSpace Chance 22 false
-Estate Indiana_Avenue 23 220 Unowned false 0 Red
-Estate Illinois_Avenue 24 240 Unowned false 0 Red
-Restaurant B._&_O._Railroad 25 200 Unowned false 0 Restaurant
-Estate Atlantic_Avenue 26 260 Unowned false 0 Yellow
-Estate Ventnor_Avenue 27 260 Unowned false 0 Yellow
-Factory Water_Works 28 150 Unowned false 0 Factory
-Estate Marvin_Gardens 29 280 Unowned false 0 Yellow
+Estate Indiana_Avenue 23 220 5 false 0 Red
+Estate Illinois_Avenue 24 240 5 false 0 Red
+Restaurant B._&_O._Railroad 25 200 5 false 0 Restaurant
+Estate Atlantic_Avenue 26 260 5 false 0 Yellow
+Estate Ventnor_Avenue 27 260 5 false 0 Yellow
+Factory Water_Works 28 150 5 false 0 Factory
+Estate Marvin_Gardens 29 280 5 false 0 Yellow
 GoToJail Go_To_Jail 30
-Estate Pacific_Avenue 31 300 Unowned false 0 Green
-Estate North_Carolina_Avenue 32 300 Unowned false 0 Green
+Estate Pacific_Avenue 31 300 5 false 0 Green
+Estate North_Carolina_Avenue 32 300 5 false 0 Green
 CardSpace Community_Chest 33 true
-Estate Pennsylvania_Avenue 34 320 Unowned false 0 Green
-Restaurant Short_Line 35 200 Unowned false 0 Restaurant
+Estate Pennsylvania_Avenue 34 320 5 false 0 Green
+Restaurant Short_Line 35 200 5 false 0 Restaurant
 CardSpace Chance 36 false
-Estate Park_Place 37 350 Unowned false 0 Blue
+Estate Park_Place 37 350 5 false 0 Blue
 Jeepers Income_Tax 38
-Estate Boardwalk 39 400 Unowned false 0 Blue
+Estate Boardwalk 39 400 5 false 0 Blue

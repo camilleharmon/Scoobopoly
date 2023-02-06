@@ -2,12 +2,12 @@
 public class Factory extends Property{
 
 	protected int price;
-	protected String owner;
+	protected int owner;
 	protected boolean forSale;
 	protected int level;
 	protected String group;
 	
-	protected Factory(String n, int u, int p, String o, boolean fs, int l, String g) {
+	protected Factory(String n, int u, int p, int o, boolean fs, int l, String g) {
 		
 		name = n;
 		umber = u;
@@ -41,11 +41,11 @@ public class Factory extends Property{
 		this.price = price;
 	}
 
-	public String getOwner() {
+	public int getOwner() {
 		return owner;
 	}
 
-	public void setOwner(String owner) {
+	public void setOwner(int owner) {
 		this.owner = owner;
 	}
 

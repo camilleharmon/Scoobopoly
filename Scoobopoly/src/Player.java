@@ -5,17 +5,17 @@ public class Player {
 	protected String name = "";
 	protected String character = "";
 	//protected ArrayList <String> assets = new ArrayList<String>();
-	protected String inventory = "";
+	//protected String inventory = "";
 	protected int bank;
 	protected boolean jail;
 	protected boolean bankrupt;
 	
-	protected Player(String n, String c, String i, int b, boolean j, boolean ba) {
+	protected Player(String n, String c, int b, boolean j, boolean ba) {
 		
 		name = n;
 		character = c;
 		//assets = a;
-		inventory = i;
+		//inventory = i;
 		bank = b;
 		jail = j;
 		bankrupt = ba;
@@ -49,13 +49,13 @@ public class Player {
 		return bank;
 	}
 
-	public String getInventory() {
-		return inventory;
-	}
-
-	public void setInventory(String inventory) {
-		this.inventory = inventory;
-	}
+//	public String getInventory() {
+//		return inventory;
+//	}
+//
+//	public void setInventory(String inventory) {
+//		this.inventory = inventory;
+//	}
 
 	public void setBank(int bank) {
 		this.bank = bank;

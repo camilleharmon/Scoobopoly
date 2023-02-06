@@ -15,10 +15,10 @@ public class Runner {
 	static int theme;
 	static int numPlayers;
 	static int charnum = 1;
-	static ArrayList <Property> player1Inventory = new ArrayList<Property>();
-	static ArrayList <Property> player2Inventory = new ArrayList<Property>();
-	static ArrayList <Property> player3Inventory = new ArrayList<Property>();
-	static ArrayList <Property> player4Inventory = new ArrayList<Property>();
+//	static ArrayList <Property> player1Inventory = new ArrayList<Property>();
+//	static ArrayList <Property> player2Inventory = new ArrayList<Property>();
+//	static ArrayList <Property> player3Inventory = new ArrayList<Property>();
+//	static ArrayList <Property> player4Inventory = new ArrayList<Property>();
 	static ArrayList <String> scoobyCharacters = new ArrayList<String>();
 	static ArrayList <String> classicCharacters = new ArrayList<String>();
 	public static final String ANSI_RESET = "\u001B[0m";
@@ -59,23 +59,37 @@ public class Runner {
 		display(0);
 	}
 	
+	
 	public static void display(int player) {
 		
 		System.out.println("______________________________________________________");
 		System.out.println(playersList.get(player).getCharacter());
-		System.out.println("Bank: " + playersList.get(player).getBank());
-		System.out.println("Jail Status: " + playersList.get(player).isJail());
-		System.out.println("                    Assets");
+		System.out.println(BOLD + "Bank: $" + ANSI_RESET + playersList.get(player).getBank());
 		
-		if(playersList.get(player).getInventory() < 1) {
+		if(playersList.get(player).isJail() == true) {
 			
-			System.out.println("No properties owned");
+			System.out.println(BOLD + "Jail Status: " + ANSI_RESET + ANSI_RED + "ARRESTED" + ANSI_RESET);
 		}else {
 			
-			for(int i = 0; i < playersList.get(player).getAssets().size(); i++) {
+			System.out.println(BOLD + "Jail Status: " + ANSI_RESET + ANSI_CYAN + "FREE" + ANSI_RESET);
+		}
+
+		System.out.println("                    " + UNDERLINED + "Assets" + ANSI_RESET);
+		
+		int counter = 0;
+		
+		for(int i = 0; i < board.size(); i++) {
+			
+			if(board.getOwner() == player) {
 				
-				System.out.println(playersList.get(player).getAssets().get(i));
+				System.out.println(board.getName());
+				counter++;
 			}
+		}
+		
+		if(counter == 0) {
+			
+			System.out.println("No properties owned");
 		}
 	}
 	
@@ -162,21 +176,7 @@ public class Runner {
 				classicCharacters.remove(charnum-1);
 			}
 			
-			if(i == 1) {
-				
-				inventory = "player1Inventory";
-			}else if(i == 2) {
-				
-				inventory = "player2Inventory";
-			}else if(i == 3) {
-				
-				inventory = "player3Inventory";
-			}else{
-				
-				inventory = "player4Inventory";
-			}
-			
-			playersList.add(new Player(name, character, inventory, 0, false, false));
+			playersList.add(new Player(name, character, 0, false, false));
 		}
 	}
 	
@@ -275,7 +275,7 @@ public class Runner {
 				String name = file.next();
 				int num = file.nextInt();
 				int price = file.nextInt();
-				String owner = file.next();
+				int owner = file.nextInt();
 				boolean fs = file.nextBoolean();
 				int level = file.nextInt();
 				String group = file.next();
@@ -287,7 +287,7 @@ public class Runner {
 				String name = file.next();
 				int num = file.nextInt();
 				int price = file.nextInt();
-				String owner = file.next();
+				int owner = file.nextInt();
 				boolean fs = file.nextBoolean();
 				int level = file.nextInt();
 				String group = file.next();
@@ -298,12 +298,12 @@ public class Runner {
 				String name = file.next();
 				int num = file.nextInt();
 				int price = file.nextInt();
-				String owner = file.next();
+				int owner = file.nextInt();
 				boolean fs = file.nextBoolean();
 				int level = file.nextInt();
 				String group = file.next();
 				
-				board.add(new Estate(name, num, price, owner, fs, level, group));
+				board.add(new Restaurant(name, num, price, owner, fs, level, group));
 			}else if(type.equals("Go")) {
 				
 				String name = file.next();
