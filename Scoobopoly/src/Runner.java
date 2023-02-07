@@ -7,7 +7,7 @@ public class Runner {
 
 	static boolean game = true;
 	static int dice;
-	static ArrayList <Property> board = new ArrayList<Property>();
+	static ArrayList <IProperty> board = new ArrayList<IProperty>();
 	static ArrayList <Card> chance = new ArrayList<Card>();
 	static ArrayList <Card> communityChest = new ArrayList<Card>();
 	static ArrayList <Player> playersList = new ArrayList<Player>();
@@ -49,7 +49,6 @@ public class Runner {
 	
 	public static void main(String[] args) throws IOException {
 		
-		System.out.println(WHITEW + "COLOR" + ANSI_RESET);
 		chooseTheme();
 		choosePlayers();
 		fillBoard();
@@ -59,6 +58,9 @@ public class Runner {
 		display(0);
 	}
 	
+	public static String padRight(String s, int n) {
+	     return String.format("%-" + n + "s", s);  
+	}
 	
 	public static void display(int player) {
 		
@@ -77,14 +79,30 @@ public class Runner {
 		System.out.println("                    " + UNDERLINED + "Assets" + ANSI_RESET);
 		
 		int counter = 0;
+		ArrayList<IProperty> mine = new ArrayList<IProperty>();
 		
 		for(int i = 0; i < board.size(); i++) {
 			
-			if(board.getOwner() == player) {
+			IProperty pro = board.get(i);
+			
+			if(pro.getOwner() == player) {
 				
-				System.out.println(board.getName());
+				//System.out.println(pro.getName());
+				mine.add(pro);
 				counter++;
 			}
+		}
+		
+		for(int z = 0; z < mine.size(); z++) {
+			
+			IProperty pro = board.get(z);
+			
+			if(z%2 == 0 && z > 0) {
+				
+				System.out.println("");
+			}
+			
+			System.out.print(padRight(pro.getName(), 30));
 		}
 		
 		if(counter == 0) {
@@ -254,16 +272,16 @@ public class Runner {
 		
 		System.out.print("Making board");
 		
-//		for(int i = 0; i < 3; i++) {
-//			
-//			try {
-//				Thread.sleep(1000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			System.out.print(".");
-//		}
+		for(int i = 0; i < 3; i++) {
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.print(".");
+		}
 		System.out.println("");
 		
 		for(int i = 0; i<40; i++) {
@@ -344,12 +362,18 @@ public class Runner {
 			}
 		}
 		
-//		try {
-//			Thread.sleep(2000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
+//		for(int k = 0; k < board.size(); k++) {
+//			
+//			IProperty pro = board.get(k);
+//			System.out.println(pro.getName());
 //		}
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("Board Complete!");
 		System.out.println("");
 	}

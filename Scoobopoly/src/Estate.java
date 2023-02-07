@@ -9,8 +9,7 @@ public class Estate extends Property{
 	
 	protected Estate(String n, int u, int p, int o, boolean fs, int l, String g) {
 		
-		name = n;
-		umber = u;
+		super(n, u);
 		price = p;
 		owner = o;
 		forSale = fs;
