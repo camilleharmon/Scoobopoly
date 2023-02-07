@@ -9,8 +9,9 @@ public class Player {
 	protected int bank;
 	protected boolean jail;
 	protected boolean bankrupt;
+	protected int currentSpace;
 	
-	protected Player(String n, String c, int b, boolean j, boolean ba) {
+	protected Player(String n, String c, int b, boolean j, boolean ba, int cs) {
 		
 		name = n;
 		character = c;
@@ -19,6 +20,7 @@ public class Player {
 		bank = b;
 		jail = j;
 		bankrupt = ba;
+		currentSpace = cs;
 	}
 
 	public String getName() {
@@ -75,6 +77,14 @@ public class Player {
 
 	public void setBankrupt(boolean bankrupt) {
 		this.bankrupt = bankrupt;
+	}
+
+	public int getCurrentSpace() {
+		return currentSpace;
+	}
+
+	public void setCurrentSpace(int currentSpace) {
+		this.currentSpace = currentSpace;
 	}
 	
 	

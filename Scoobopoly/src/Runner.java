@@ -56,6 +56,56 @@ public class Runner {
 		fillCharacters();
 		createCharacters();
 		display(0);
+		gameOn();
+	}
+	
+	public static void move(int player) {
+		
+		playersList.get(player).setCurrentSpace(playersList.get(player).getCurrentSpace() + dice);
+	}
+	
+	public static void buyProperty(int player) {
+		
+		Scanner userIntInput = new Scanner(System.in);
+		System.out.println(BOLD + "Price: $" + ANSI_RESET + board.get(playersList.get(player).getCurrentSpace()).getPrice());
+		System.out.println("Would you like to buy this property?");
+		System.out.println("1) Yes");
+		System.out.println("2) No");
+		int answer = userIntInput.nextInt();
+		
+		if(answer == 1) {
+			
+			System.out.println(playersList.get(player).getCharacter() + " has bought " + board.get(playersList.get(player).getCurrentSpace()));
+			board.get(playersList.get(player).getCurrentSpace()).setOwner(player);
+		}else {
+			
+			System.out.println(playersList.get(player).getCharacter() + " declined to buy " + board.get(playersList.get(player).getCurrentSpace()));
+		}
+	}
+	
+	public static void payRent(int player) {
+		
+		int holder = board.get(playersList.get(player).getCurrentSpace()).getOwner();
+		String holder2 = playersList.get(holder).getCharacter();
+		
+		System.out.println(holder2 + " owns this property.");
+		System.out.println(BOLD + "Rent: $" + ANSI_RESET + board.get(playersList.get(player).getCurrentSpace()).getLevel());
+	}
+	
+	public static void getSpace(int player) {
+		
+		System.out.println("______________________________________________________");
+		System.out.println(board.get(playersList.get(player).getCurrentSpace()).getName());
+		
+		if(board.get(playersList.get(player).getCurrentSpace()).isforSale()) {
+			
+			buyProperty(player);
+		}else {
+			
+			payRent(player);
+		}
+		
+	
 	}
 	
 	public static String padRight(String s, int n) {
@@ -115,9 +165,14 @@ public class Runner {
 		
 		while(true) {
 			
-			if(playersList.get(0).isBankrupt() == false) {
+			for(int i = 0; i < playersList.size(); i++) {
 				
-				rollDice();
+				if(playersList.get(i).isBankrupt() == false) {
+				
+					rollDice();
+					move(i);
+					display(i);
+				}
 			}
 		}
 	}
@@ -194,7 +249,7 @@ public class Runner {
 				classicCharacters.remove(charnum-1);
 			}
 			
-			playersList.add(new Player(name, character, 0, false, false));
+			playersList.add(new Player(name, character, 200, false, false, 0));
 		}
 	}
 	
@@ -272,17 +327,17 @@ public class Runner {
 		
 		System.out.print("Making board");
 		
-		for(int i = 0; i < 3; i++) {
-			
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.print(".");
-		}
-		System.out.println("");
+//		for(int i = 0; i < 3; i++) {
+//			
+//			try {
+//				Thread.sleep(1000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			System.out.print(".");
+//		}
+//		System.out.println("");
 		
 		for(int i = 0; i<40; i++) {
 			
@@ -368,12 +423,12 @@ public class Runner {
 //			System.out.println(pro.getName());
 //		}
 		
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		System.out.println("Board Complete!");
 		System.out.println("");
 	}

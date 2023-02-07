@@ -3,6 +3,10 @@ public class Property implements IProperty {
 
 	protected String name = "";
 	protected int umber;
+	protected boolean forSale = false;
+	protected int price = 0;
+	protected int owner = 5;
+	protected int level = 0;
 	
 	Property()
 	{
@@ -34,4 +38,19 @@ public class Property implements IProperty {
 		return 5;
 	}
 	
+	public void setOwner(int owner) {
+		this.owner = owner;
+	}
+	
+	public boolean isForSale() {
+		return forSale;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+	
+	public int getLevel() {
+		return level;
+	}
 }
