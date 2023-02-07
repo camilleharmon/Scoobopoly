@@ -1,13 +1,14 @@
 
-public class Estate extends Property{
+public class Estate extends Property implements IProperty{
 
 	protected int price;
 	protected int owner;
 	protected boolean forSale;
 	protected int level;
 	protected String group;
+	protected int rent1;
 	
-	protected Estate(String n, int u, int p, int o, boolean fs, int l, String g) {
+	protected Estate(String n, int u, int p, int o, boolean fs, int l, String g, int r1) {
 		
 		super(n, u);
 		price = p;
@@ -15,6 +16,7 @@ public class Estate extends Property{
 		forSale = fs;
 		level = l;
 		group = g;
+		rent1 = r1;
 	}
 
 	public String getName() {
@@ -71,6 +73,14 @@ public class Estate extends Property{
 
 	public void setGroup(String group) {
 		this.group = group;
+	}
+
+	public int getRent1() {
+		return rent1;
+	}
+
+	public void setRent1(int rent1) {
+		this.rent1 = rent1;
 	}
 	
 	

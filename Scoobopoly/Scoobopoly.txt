@@ -1,40 +1,40 @@
 Go Clubhouse 0
-Estate Gypsy_Wagon 1 60 5 true 0 Brown
+Estate Gypsy_Wagon 1 60 5 true 0 Brown 2
 CardSpace Zoinks 2 true
-Estate Witch's_Hut 3 60 5 true 0 Brown
-Restaurant Tiki_Tub 4 200 5 true 0 Restaurant
+Estate Witch's_Hut 3 60 5 true 0 Brown 4
+Restaurant Tiki_Tub 4 200 5 true 0 Restaurant 25
 Jeepers Jeepers 5
-Estate Gold_City_Mine 6 100 5 true 0 Azure
+Estate Gold_City_Mine 6 100 5 true 0 Azure 6
 CardSpace Jinkies 7 false
-Estate Abandoned_Airfield 8 100 5 true 0 Azure
-Estate Sawmill 9 120 5 true 0 Azure
+Estate Abandoned_Airfield 8 100 5 true 0 Azure 6
+Estate Sawmill 9 120 5 true 0 Azure 8
 Jail Jail 10
-Estate Graveyard_of_Ships 11 140 5 true 0 Pink
-Factory Gas_Station 12 150 5 true 0 Factory
-Estate Wolf's_End_Lodge 13 140 5 true 0 Pink
-Estate Cemetery 14 160 5 true 0 Pink
-Restaurant Fruitmeir's 15 200 5 true 0 Restaurant
-Estate Jone's_Cheesery 16 180 5 true 0 Orange
+Estate Graveyard_of_Ships 11 140 5 true 0 Pink 10
+Factory Gas_Station 12 150 5 true 0 Factory 4
+Estate Wolf's_End_Lodge 13 140 5 true 0 Pink 10
+Estate Cemetery 14 160 5 true 0 Pink 12
+Restaurant Fruitmeir's 15 200 5 true 0 Restaurant 25
+Estate Jone's_Cheesery 16 180 5 true 0 Orange 14
 CardSpace Zoinks 17 true
-Estate Dinkley's_Bookshop 18 180 5 true 0 Orange
-Estate Blake's_Videorama 19 200 5 true 0 Orange
+Estate Dinkley's_Bookshop 18 180 5 true 0 Orange 14
+Estate Blake's_Videorama 19 200 5 true 0 Orange 16
 FreeSpace Free_Parking 20
-Estate Rocky_Point_Beach 21 220 5 true 0 Red
+Estate Rocky_Point_Beach 21 220 5 true 0 Red 18
 CardSpace Jinkies 22 false
-Estate Brancusi_Circus 23 220 5 true 0 Red
-Estate Funland 24 240 5 true 0 Red
-Restaurant Bloody_Stake 25 200 5 true 0 Restaurant
-Estate Burlington_Library 26 260 5 true 0 Yellow
-Estate Shady_Sanitarium 27 260 5 true 0 Yellow
-Factory Destrodio_Corp 28 150 5 true 0 Factory
-Estate Wax_Muesem 29 280 5 true 0 Yellow
+Estate Brancusi_Circus 23 220 5 true 0 Red 18
+Estate Funland 24 240 5 true 0 Red 20
+Restaurant Bloody_Stake 25 200 5 true 0 Restaurant 25
+Estate Burlington_Library 26 260 5 true 0 Yellow 22
+Estate Shady_Sanitarium 27 260 5 true 0 Yellow 22
+Factory Destrodio_Corp 28 150 5 true 0 Factory 4
+Estate Wax_Muesem 29 280 5 true 0 Yellow 24
 GoToJail Go_To_Jail 30
-Estate Sander's_Mansion 31 300 5 true 0 Green
-Estate Franken_Castle 32 300 5 true 0 Green
+Estate Sander's_Mansion 31 300 5 true 0 Green 26
+Estate Franken_Castle 32 300 5 true 0 Green 26
 CardSpace Zoinks 33 true
-Estate Skull_Island 34 320 5 true 0 Green
-Restaurant Malt_Shop 35 200 5 true 0 Restaurant
+Estate Skull_Island 34 320 5 true 0 Green 28
+Restaurant Malt_Shop 35 200 5 true 0 Restaurant 25
 CardSpace Jinkies 36 false
-Estate Kingston_Mansion 37 350 5 true 0 Blue
+Estate Kingston_Mansion 37 350 5 true 0 Blue 35 
 Jeepers Jeepers 38
-Estate Vasquez_Castle 39 400 5 true 0 Blue
+Estate Vasquez_Castle 39 400 5 true 0 Blue 50

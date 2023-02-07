@@ -7,6 +7,7 @@ public class Property implements IProperty {
 	protected int price = 0;
 	protected int owner = 5;
 	protected int level = 0;
+	protected int rent1 = 0;
 	
 	Property()
 	{
@@ -52,5 +53,9 @@ public class Property implements IProperty {
 	
 	public int getLevel() {
 		return level;
+	}
+	
+	public int getRent1() {
+		return rent1;
 	}
 }

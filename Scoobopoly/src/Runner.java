@@ -83,12 +83,31 @@ public class Runner {
 		}
 	}
 	
+	public static void pay(int player, int pay) {
+		
+		int playerBank = playersList.get(player).getBank();
+		
+		if(playerBank < pay) {
+			
+			playersList.get(player).setBankrupt(true);
+		}else {
+			
+			playersList.get(player).setBank(playerBank - pay);
+		}
+	}
+	
 	public static void payRent(int player) {
 		
 		int holder = board.get(playersList.get(player).getCurrentSpace()).getOwner();
 		String holder2 = playersList.get(holder).getCharacter();
 		
 		System.out.println(holder2 + " owns this property.");
+		
+		if(board.get(playersList.get(player).getCurrentSpace()).getLevel() == 0) {
+			
+			System.out.println("You need to pay $" + board.get(playersList.get(player).getCurrentSpace()).getRent1());
+			pay(player, board.get(playersList.get(player).getCurrentSpace()).getRent1());
+		}
 		System.out.println(BOLD + "Rent: $" + ANSI_RESET + board.get(playersList.get(player).getCurrentSpace()).getLevel());
 	}
 	
@@ -97,7 +116,7 @@ public class Runner {
 		System.out.println("______________________________________________________");
 		System.out.println(board.get(playersList.get(player).getCurrentSpace()).getName());
 		
-		if(board.get(playersList.get(player).getCurrentSpace()).isforSale()) {
+		if(board.get(playersList.get(player).getCurrentSpace()).isForSale()) {
 			
 			buyProperty(player);
 		}else {
@@ -171,6 +190,7 @@ public class Runner {
 				
 					rollDice();
 					move(i);
+					getSpace(i);
 					display(i);
 				}
 			}
@@ -178,7 +198,21 @@ public class Runner {
 	}
 	
 	public static void rollDice() {
+
+		System.out.print("Rolling Dice");
 		
+		for(int i = 0; i < 3; i++) {
+			
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.print(".");
+		}
+		System.out.println("");
+			
 		dice = (int)(Math.random() * 6)+1;
 		System.out.println("You rolled a " + dice + ".");
 	}
@@ -327,17 +361,17 @@ public class Runner {
 		
 		System.out.print("Making board");
 		
-//		for(int i = 0; i < 3; i++) {
-//			
-//			try {
-//				Thread.sleep(1000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			System.out.print(".");
-//		}
-//		System.out.println("");
+		for(int i = 0; i < 3; i++) {
+			
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.print(".");
+		}
+		System.out.println("");
 		
 		for(int i = 0; i<40; i++) {
 			
@@ -352,9 +386,10 @@ public class Runner {
 				boolean fs = file.nextBoolean();
 				int level = file.nextInt();
 				String group = file.next();
+				int rent1 = file.nextInt();
 				//String color = file.next();
 				
-				board.add(new Estate(name, num, price, owner, fs, level, group));
+				board.add(new Estate(name, num, price, owner, fs, level, group, rent1));
 			}else if(type.equals("Factory")) {
 				
 				String name = file.next();
@@ -364,8 +399,9 @@ public class Runner {
 				boolean fs = file.nextBoolean();
 				int level = file.nextInt();
 				String group = file.next();
+				int rent1 = file.nextInt();
 				
-				board.add(new Factory(name, num, price, owner, fs, level, group));
+				board.add(new Factory(name, num, price, owner, fs, level, group, rent1));
 			}else if(type.equals("Restaurant")) {
 				
 				String name = file.next();
@@ -375,8 +411,9 @@ public class Runner {
 				boolean fs = file.nextBoolean();
 				int level = file.nextInt();
 				String group = file.next();
+				int rent1 = file.nextInt();
 				
-				board.add(new Restaurant(name, num, price, owner, fs, level, group));
+				board.add(new Restaurant(name, num, price, owner, fs, level, group, rent1));
 			}else if(type.equals("Go")) {
 				
 				String name = file.next();
@@ -423,12 +460,12 @@ public class Runner {
 //			System.out.println(pro.getName());
 //		}
 		
-//		try {
-//			Thread.sleep(2000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("Board Complete!");
 		System.out.println("");
 	}

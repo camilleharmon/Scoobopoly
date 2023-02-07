@@ -7,10 +7,12 @@ public interface IProperty{
 	
 	public int getPrice();
 	
-	public boolean isforSale();
+	public boolean isForSale();
 	
 	public void setOwner(int owner);
 	
 	public int getLevel();
-	}
+	
+	public int getRent1();
+
 }

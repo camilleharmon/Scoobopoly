@@ -23,8 +23,18 @@ public class Jeepers extends Property{
 		this.umber = umber;
 	}
 	
-	public void collect() {
+	public void collect(int player) {
 		
-		assets.set(player).bank() = assets.get(player).bank() - 200;
+		System.out.println("You landed on Jeepers, pay $200");
+		
+		int playerBank = playersList.get(player).getBank();
+		
+		if(playerBank < 200) {
+			
+			playersList.get(player).setBankrupt(true);
+		}else {
+			
+			playersList.get(player).setBank(playerBank - 200);
+		}
 	}
 }

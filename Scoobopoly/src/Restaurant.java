@@ -6,14 +6,16 @@ public class Restaurant extends Property {
 	protected boolean forSale;
 	protected int level;
 	protected String group;
+	protected int rent1;
 	
-	protected Restaurant(String n, int u, int p, int o, boolean fs, int l, String g) {
+	protected Restaurant(String n, int u, int p, int o, boolean fs, int l, String g, int r1) {
 		
 		super(n, u);
 		price = p;
 		owner = o;
 		forSale = fs;
 		level = l;
+		rent1 = r1;
 	}
 	
 	public String getName() {
@@ -70,6 +72,14 @@ public class Restaurant extends Property {
 
 	public void setGroup(String group) {
 		this.group = group;
+	}
+
+	public int getRent1() {
+		return rent1;
+	}
+
+	public void setRent1(int rent1) {
+		this.rent1 = rent1;
 	}
 	
 }
