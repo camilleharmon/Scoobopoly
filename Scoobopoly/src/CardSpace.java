@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CardSpace extends Property{
 
@@ -33,5 +35,16 @@ public class CardSpace extends Property{
 		this.isZoinks = isZoinks;
 	}
 	
-	
+	public void pickZoinks(int player, ArrayList <Player> playersList, ArrayList <Card> communityChest) {
+		
+		Scanner userIntInput = new Scanner(System.in);
+		System.out.println("You landed on Zoink, here is your card: ");
+		
+		int random = (int)(Math.random() * 14)+1;
+		
+		System.out.println(communityChest.get(random).getCard());
+		System.out.println("OKAY");
+		int enter = userIntInput.nextInt();
+		
+	}
 }

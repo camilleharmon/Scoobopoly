@@ -15,10 +15,6 @@ public class Runner {
 	static int theme;
 	static int numPlayers;
 	static int charnum = 1;
-//	static ArrayList <Property> player1Inventory = new ArrayList<Property>();
-//	static ArrayList <Property> player2Inventory = new ArrayList<Property>();
-//	static ArrayList <Property> player3Inventory = new ArrayList<Property>();
-//	static ArrayList <Property> player4Inventory = new ArrayList<Property>();
 	static ArrayList <String> scoobyCharacters = new ArrayList<String>();
 	static ArrayList <String> classicCharacters = new ArrayList<String>();
 	public static final String ANSI_RESET = "\u001B[0m";
@@ -55,7 +51,6 @@ public class Runner {
 		fillDecks();
 		fillCharacters();
 		createCharacters();
-		//display(0);
 		gameOn();
 	}
 	
@@ -116,6 +111,8 @@ public class Runner {
 	public static void pay(int player, int pay) {
 		
 		int playerBank = playersList.get(player).getBank();
+		int holder = board.get(playersList.get(player).getCurrentSpace()).getOwner();
+		int holderBank = playersList.get(holder).getBank();
 		
 		if(playerBank < pay) {
 			
@@ -124,6 +121,7 @@ public class Runner {
 		}else {
 			
 			playersList.get(player).setBank(playerBank - pay);
+			//playersList.get(holder).setBank(holderBank + pay);
 		}
 	}
 	
@@ -261,10 +259,10 @@ public class Runner {
 					//System.out.println("_________________________________________");
 				}
 				counter++;
-				if(counter == 50) {
-					
-					game = false;
-				}
+//				if(counter == 50) {
+//					
+//					game = false;
+//				}
 				
 			}
 			
@@ -450,15 +448,6 @@ public class Runner {
 		classicCharacters.add(new String(ANSI_YELLOW + "Thimble" + ANSI_RESET));
 	}
 
-	public static void readColor(String color) {
-		
-		if(color.equals("ANSI_MAGENTA")) {
-			
-			
-		}
-	}
-	
-	
 	public static void fillBoard() throws IOException{
 		
 		System.out.print("Making board");
@@ -490,32 +479,32 @@ public class Runner {
 				String group = file.next();
 				int rent1 = file.nextInt();
 				
-//				if(group.equals("Brown")) {
-//					
-//					board.add(new Estate(ANSI_MAGENTA + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-//				}else if(group.equals("Azure")) {
-//					
-//					board.add(new Estate(LBLUE + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-//				}else if(group.equals("Pink")) {
-//					
-//					board.add(new Estate(PINK + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-//				}else if(group.equals("Orange")) {
-//					
-//					board.add(new Estate(ORANGE + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-//				}else if(group.equals("Red")) {
-//					
-//					board.add(new Estate(RED + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-//				}else if(group.equals("Yellow")) {
-//					
-//					board.add(new Estate(YELLOW + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-//				}else if(group.equals("Green")) {
-//					
-//					board.add(new Estate(GREEN + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-//				}else if(group.equals("Green")) {
-//					
-//					board.add(new Estate(BLUE + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-//				}
-//				
+				if(group.equals("Brown")) {
+					
+					board.add(new Estate(ANSI_MAGENTA + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+				}else if(group.equals("Azure")) {
+					
+					board.add(new Estate(LBLUE + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+				}else if(group.equals("Pink")) {
+					
+					board.add(new Estate(PINK + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+				}else if(group.equals("Orange")) {
+					
+					board.add(new Estate(ORANGE + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+				}else if(group.equals("Red")) {
+					
+					board.add(new Estate(RED + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+				}else if(group.equals("Yellow")) {
+					
+					board.add(new Estate(YELLOW + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+				}else if(group.equals("Green")) {
+					
+					board.add(new Estate(GREEN + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+				}else if(group.equals("Green")) {
+					
+					board.add(new Estate(BLUE + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+				}
+				
 				board.add(new Estate(name, num, price, owner, fs, level, group, rent1));
 				
 			}else if(type.equals("Factory")) {
