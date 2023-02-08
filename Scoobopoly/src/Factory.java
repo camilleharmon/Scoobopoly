@@ -16,6 +16,7 @@ public class Factory extends Property{
 		forSale = fs;
 		level = l;
 		rent1 = r1;
+		super.canBuy = true;
 	}
 	
 	public String getName() {

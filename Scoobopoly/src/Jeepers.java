@@ -1,6 +1,11 @@
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Jeepers extends Property{
 
+	public static final String RED = "\u001b[41;1m";
+	public static final String ANSI_RESET = "\u001B[0m";
+	
 	protected Jeepers(String n, int u) {
 		
 		name = n;
@@ -23,8 +28,9 @@ public class Jeepers extends Property{
 		this.umber = umber;
 	}
 	
-	public void collect(int player) {
+	public void moveMoney(int player, ArrayList <Player> playersList) {
 		
+		Scanner userIntInput = new Scanner(System.in);
 		System.out.println("You landed on Jeepers, pay $200");
 		
 		int playerBank = playersList.get(player).getBank();
@@ -32,9 +38,12 @@ public class Jeepers extends Property{
 		if(playerBank < 200) {
 			
 			playersList.get(player).setBankrupt(true);
+			System.out.println(playersList.get(player).character + " went bankrupt.");
 		}else {
 			
 			playersList.get(player).setBank(playerBank - 200);
+			System.out.println(RED + "PAY UP" + ANSI_RESET);
+			int enter = userIntInput.nextInt();
 		}
 	}
 }

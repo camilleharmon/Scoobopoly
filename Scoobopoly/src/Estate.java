@@ -17,6 +17,7 @@ public class Estate extends Property implements IProperty{
 		level = l;
 		group = g;
 		rent1 = r1;
+		super.canBuy = true;
 	}
 
 	public String getName() {

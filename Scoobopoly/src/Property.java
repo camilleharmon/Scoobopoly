@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Property implements IProperty {
 
@@ -8,6 +9,7 @@ public class Property implements IProperty {
 	protected int owner = 5;
 	protected int level = 0;
 	protected int rent1 = 0;
+	protected boolean canBuy = false;
 	
 	Property()
 	{
@@ -47,6 +49,10 @@ public class Property implements IProperty {
 		return forSale;
 	}
 	
+	public void setForSale(boolean forSale) {
+		this.forSale = forSale;
+	}
+	
 	public int getPrice() {
 		return price;
 	}
@@ -57,5 +63,17 @@ public class Property implements IProperty {
 	
 	public int getRent1() {
 		return rent1;
+	}
+	
+	public boolean isCanBuy() {
+		return canBuy;
+	}
+	
+	public void moveMoney(int player, ArrayList <Player> playersList) {
+		
+	}
+	
+	public void go(int player, ArrayList <Player> playersList) {
+		
 	}
 }

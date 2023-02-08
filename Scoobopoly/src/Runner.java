@@ -55,19 +55,45 @@ public class Runner {
 		fillDecks();
 		fillCharacters();
 		createCharacters();
-		display(0);
+		//display(0);
 		gameOn();
 	}
 	
 	public static void move(int player) {
 		
-		playersList.get(player).setCurrentSpace(playersList.get(player).getCurrentSpace() + dice);
+		int location = playersList.get(player).getCurrentSpace();
+		
+		if(location + dice < board.size()) {
+			
+			playersList.get(player).setCurrentSpace(location + dice);
+		}else{
+			
+			location = location + dice - board.size();
+			playersList.get(player).setCurrentSpace(location);
+			
+			IProperty pro = board.get(0);
+			
+			//Passed go or landed on go
+			pro.go(player, playersList);
+		}
+		
+		//playersList.get(player).setCurrentSpace(location);
+		//System.out.println("Player Location: " + playersList.get(player).getCurrentSpace());
 	}
 	
 	public static void buyProperty(int player) {
 		
+		int price = board.get(playersList.get(player).getCurrentSpace()).getPrice();
+		int playerBank = playersList.get(player).getBank();
+		int location = playersList.get(player).getCurrentSpace();
+		
+		if(price > playerBank) {
+			
+			System.out.println("Insufficent funds");
+			return;	
+		}
 		Scanner userIntInput = new Scanner(System.in);
-		System.out.println(BOLD + "Price: $" + ANSI_RESET + board.get(playersList.get(player).getCurrentSpace()).getPrice());
+		System.out.println(BOLD + "Price: $" + ANSI_RESET + price);
 		System.out.println("Would you like to buy this property?");
 		System.out.println("1) Yes");
 		System.out.println("2) No");
@@ -75,11 +101,15 @@ public class Runner {
 		
 		if(answer == 1) {
 			
-			System.out.println(playersList.get(player).getCharacter() + " has bought " + board.get(playersList.get(player).getCurrentSpace()));
-			board.get(playersList.get(player).getCurrentSpace()).setOwner(player);
+			System.out.println(playersList.get(player).getCharacter() + " has bought " + board.get(location).getName());
+			board.get(location).setOwner(player);
+//			System.out.println("Owner: " + board.get(location).getOwner());
+//			System.out.println("Name: " + board.get(location).getName());
+			board.get(location).setForSale(false);
+			pay(player, price);
 		}else {
 			
-			System.out.println(playersList.get(player).getCharacter() + " declined to buy " + board.get(playersList.get(player).getCurrentSpace()));
+			System.out.println(playersList.get(player).getCharacter() + " declined to buy " + board.get(location).getName());
 		}
 	}
 	
@@ -90,6 +120,7 @@ public class Runner {
 		if(playerBank < pay) {
 			
 			playersList.get(player).setBankrupt(true);
+			System.out.println(playersList.get(player).character + " went bankrupt.");
 		}else {
 			
 			playersList.get(player).setBank(playerBank - pay);
@@ -98,7 +129,15 @@ public class Runner {
 	
 	public static void payRent(int player) {
 		
+		Scanner userIntInput = new Scanner(System.in);
 		int holder = board.get(playersList.get(player).getCurrentSpace()).getOwner();
+		//System.out.println(holder);
+		
+		if(holder >= 4) {
+			
+			return;
+		}
+		
 		String holder2 = playersList.get(holder).getCharacter();
 		
 		System.out.println(holder2 + " owns this property.");
@@ -107,16 +146,32 @@ public class Runner {
 			
 			System.out.println("You need to pay $" + board.get(playersList.get(player).getCurrentSpace()).getRent1());
 			pay(player, board.get(playersList.get(player).getCurrentSpace()).getRent1());
+		}else {
+			
+			System.out.println(BOLD + "Rent: $" + ANSI_RESET + board.get(playersList.get(player).getCurrentSpace()).getLevel());
 		}
-		System.out.println(BOLD + "Rent: $" + ANSI_RESET + board.get(playersList.get(player).getCurrentSpace()).getLevel());
+		
+		System.out.println(RED + "PAY RENT" + ANSI_RESET);
+		int enter = userIntInput.nextInt();
 	}
 	
 	public static void getSpace(int player) {
 		
-		System.out.println("______________________________________________________");
+		//System.out.println("______________________________________________________");
 		System.out.println(board.get(playersList.get(player).getCurrentSpace()).getName());
 		
-		if(board.get(playersList.get(player).getCurrentSpace()).isForSale()) {
+		IProperty pro = board.get(playersList.get(player).getCurrentSpace());
+		
+		if(!pro.isCanBuy()) {
+			
+			//Transfer money
+			pro.moveMoney(player, playersList);
+			
+			
+			return;
+		}
+			
+		if(pro.isForSale()) {
 			
 			buyProperty(player);
 		}else {
@@ -124,7 +179,6 @@ public class Runner {
 			payRent(player);
 		}
 		
-	
 	}
 	
 	public static String padRight(String s, int n) {
@@ -133,7 +187,7 @@ public class Runner {
 	
 	public static void display(int player) {
 		
-		System.out.println("______________________________________________________");
+		//System.out.println("______________________________________________________");
 		System.out.println(playersList.get(player).getCharacter());
 		System.out.println(BOLD + "Bank: $" + ANSI_RESET + playersList.get(player).getBank());
 		
@@ -156,15 +210,21 @@ public class Runner {
 			
 			if(pro.getOwner() == player) {
 				
-				//System.out.println(pro.getName());
+				//System.out.println("Name " + pro.getName());
 				mine.add(pro);
 				counter++;
 			}
+			
+//			if(pro.getOwner() != 5) {
+//				
+//				System.out.println("Owner " + pro.getOwner());
+//				System.out.println("Name " + pro.getName());
+//			}
 		}
 		
 		for(int z = 0; z < mine.size(); z++) {
 			
-			IProperty pro = board.get(z);
+			IProperty pro = mine.get(z);
 			
 			if(z%2 == 0 && z > 0) {
 				
@@ -178,21 +238,53 @@ public class Runner {
 			
 			System.out.println("No properties owned");
 		}
+		System.out.println("");
+		//System.out.println("______________________________________________________");
 	}
 	
 	public static void gameOn() {
 		
-		while(true) {
+		int counter= 0;
+		while(game) {
 			
 			for(int i = 0; i < playersList.size(); i++) {
 				
 				if(playersList.get(i).isBankrupt() == false) {
-				
+					
+					System.out.println("-----------------------------------------");
+					//System.out.println(playersList.get(i).getCharacter());
+					display(i);
 					rollDice();
 					move(i);
 					getSpace(i);
 					display(i);
+					//System.out.println("_________________________________________");
 				}
+				counter++;
+				if(counter == 50) {
+					
+					game = false;
+				}
+				
+			}
+			
+			
+			if(playersList.size() == 1)
+				continue;
+			
+			
+			int bCounter = 0;
+			for(int j = 0; j < playersList.size(); j++) {
+				
+				if(playersList.get(j).isBankrupt()) {
+					
+					bCounter++;
+				}
+			}
+			
+			if(bCounter >= playersList.size() - 1) {
+				
+				game = false;
 			}
 		}
 	}
@@ -215,6 +307,7 @@ public class Runner {
 			
 		dice = (int)(Math.random() * 6)+1;
 		System.out.println("You rolled a " + dice + ".");
+		System.out.println("");
 	}
 	
 	public static void characterSelect() {
@@ -265,8 +358,8 @@ public class Runner {
 		
 		for(int i = 1; i <= numPlayers; i++) {
 			
-			System.out.println("What is your name?");
-			String name = userInput.next();
+			//System.out.println("What is your name?");
+			//String name = userInput.next();
 			
 			if(theme == 2) {
 				
@@ -283,7 +376,7 @@ public class Runner {
 				classicCharacters.remove(charnum-1);
 			}
 			
-			playersList.add(new Player(name, character, 200, false, false, 0));
+			playersList.add(new Player("name", character, 500, false, false, 0));
 		}
 	}
 	
@@ -356,6 +449,15 @@ public class Runner {
 		classicCharacters.add(new String(ANSI_GREEN + "Cat" + ANSI_RESET));
 		classicCharacters.add(new String(ANSI_YELLOW + "Thimble" + ANSI_RESET));
 	}
+
+	public static void readColor(String color) {
+		
+		if(color.equals("ANSI_MAGENTA")) {
+			
+			
+		}
+	}
+	
 	
 	public static void fillBoard() throws IOException{
 		
@@ -387,9 +489,35 @@ public class Runner {
 				int level = file.nextInt();
 				String group = file.next();
 				int rent1 = file.nextInt();
-				//String color = file.next();
 				
+//				if(group.equals("Brown")) {
+//					
+//					board.add(new Estate(ANSI_MAGENTA + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+//				}else if(group.equals("Azure")) {
+//					
+//					board.add(new Estate(LBLUE + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+//				}else if(group.equals("Pink")) {
+//					
+//					board.add(new Estate(PINK + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+//				}else if(group.equals("Orange")) {
+//					
+//					board.add(new Estate(ORANGE + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+//				}else if(group.equals("Red")) {
+//					
+//					board.add(new Estate(RED + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+//				}else if(group.equals("Yellow")) {
+//					
+//					board.add(new Estate(YELLOW + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+//				}else if(group.equals("Green")) {
+//					
+//					board.add(new Estate(GREEN + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+//				}else if(group.equals("Green")) {
+//					
+//					board.add(new Estate(BLUE + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
+//				}
+//				
 				board.add(new Estate(name, num, price, owner, fs, level, group, rent1));
+				
 			}else if(type.equals("Factory")) {
 				
 				String name = file.next();

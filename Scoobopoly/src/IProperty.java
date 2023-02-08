@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public interface IProperty{
 
@@ -9,10 +10,17 @@ public interface IProperty{
 	
 	public boolean isForSale();
 	
+	public void setForSale(boolean forSale);
+	
 	public void setOwner(int owner);
 	
 	public int getLevel();
 	
 	public int getRent1();
-
+	
+	public boolean isCanBuy();
+	
+	public void moveMoney(int player, ArrayList <Player> playersList);
+	
+	public void go(int player, ArrayList <Player> playersList);
 }
